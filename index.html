@@ -77,13 +77,13 @@ sup{font-size:.65em}
 .cover{background:radial-gradient(1200px 600px at 70% -10%,#1d3a63 0,transparent 60%),linear-gradient(160deg,#0b1830 0%,#0d1b2e 55%,#10213b 100%);
   color:#eaf1fb;padding:90px 0 70px;position:relative;overflow:hidden}
 .cover .wrap{position:relative;z-index:2}
-.cover .kicker{color:var(--gold);text-transform:uppercase;letter-spacing:.3em;font-size:12.5px;font-weight:700}
-.cover h1{font-size:clamp(34px,6vw,62px);margin:18px 0 10px;color:#fff}
+.cover .cover-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--gold);text-transform:uppercase;letter-spacing:.26em;font-size:12px;font-weight:700;border-bottom:1px solid rgba(214,165,42,.35);padding-bottom:14px;margin-bottom:30px}
+.cover h1{font-size:clamp(32px,5.4vw,58px);margin:0 0 16px;color:#fff;max-width:900px}
 .cover h1 .grad{background:linear-gradient(90deg,var(--gold),var(--sky));-webkit-background-clip:text;background-clip:text;color:transparent}
-.cover .sub{font-size:clamp(16px,2.4vw,21px);color:#aec2dd;max-width:680px;font-weight:500}
+.cover .sub{font-size:clamp(16px,2.4vw,21px);color:#aec2dd;max-width:720px;font-weight:500}
 .cover .rule{width:90px;height:4px;background:var(--gold);border-radius:3px;margin:26px 0}
-.cover .meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:34px;color:#90a6c6;font-size:13.5px}
-.cover .meta b{color:#dce7f6;display:block;font-size:20px;font-weight:800}
+.cover .cover-edition{display:flex;flex-direction:column;gap:8px;margin-top:30px;color:#aec2dd;font-size:14px}
+.cover .cover-edition b{color:#fff;font-weight:800;letter-spacing:.02em}
 .cover-orbs{position:absolute;inset:0;z-index:1;opacity:.5}
 
 /* ---------- Sections ---------- */
@@ -283,15 +283,17 @@ footer b{color:#dce7f6}
       </g>
     </svg>
     <div class="wrap">
-      <div class="kicker">A No-Jargon Field Manual</div>
-      <h1>Silicon to <span class="grad">Superintelligence</span></h1>
-      <p class="sub">How the world turns sand into artificial intelligence — and where the money, the moats, and the bottlenecks really sit. Written so a 14-year-old can follow it, structured so an investor can use it.</p>
+      <div class="cover-top">
+        <span>Reference Manual / Volume I</span>
+        <span>Edition 2026.2</span>
+      </div>
+      <h1>The AI Semiconductor &amp; <span class="grad">Infrastructure Supply Chain</span></h1>
+      <p class="sub">A structural reference for the materials, machines, silicon, networks, and energy systems that make artificial intelligence possible — and the choke points where industries are won and lost.</p>
       <div class="rule"></div>
-      <div class="meta">
-        <div><b>15</b>Chapters, sand → end user</div>
-        <div><b>20+</b>Infographics & diagrams</div>
-        <div><b>80+</b>Companies & their moats</div>
-        <div><b>4</b>Parts, one supply chain</div>
+      <div class="cover-edition">
+        <div><b>Audience</b> — Investors &amp; analysts learning the stack</div>
+        <div><b>Shelf life</b> — Structural, not cyclical</div>
+        <div><b>Companion to</b> — Quarterly earnings &amp; news</div>
       </div>
     </div>
   </section>
