@@ -180,6 +180,25 @@ hr.soft{border:0;border-top:1px solid var(--line);margin:30px 0}
 
 .disclaimer{background:#fff7e6;border:1px solid #f0dca6;border-radius:12px;padding:16px 18px;font-size:13.5px;color:#6b5417;margin:26px 0}
 
+/* four-question framework */
+.qgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0}
+.qcard{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:12px;padding:15px 16px;box-shadow:var(--shadow)}
+.qcard .qn{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.qcard h5{margin:6px 0 6px;font-size:15px;color:var(--ink)}
+.qcard p{margin:0;font-size:13px;color:#43576f;line-height:1.5}
+@media(max-width:900px){.qgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.qgrid{grid-template-columns:1fr}}
+
+/* moat strength scale */
+.moatscale{display:flex;flex-direction:column;gap:8px;margin:18px 0 6px}
+.moatrow{display:flex;align-items:center;gap:12px;font-size:14px;color:#33455e;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 13px}
+.dots{flex:0 0 auto;display:inline-flex;gap:4px}
+.dot{width:12px;height:12px;border-radius:50%;background:#dde3ec;border:1px solid #c7d0dd}
+.dot.f{background:var(--green);border-color:var(--green)}
+.dot.m{background:var(--gold);border-color:var(--gold)}
+.dot.w{background:var(--red);border-color:var(--red)}
+.moatrow b{color:var(--ink)}
+
 footer{background:var(--ink);color:#8ea3c2;padding:40px 0;font-size:13px}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
 footer b{color:#dce7f6}
@@ -270,7 +289,7 @@ footer b{color:#dce7f6}
       <div class="rule"></div>
       <div class="meta">
         <div><b>15</b>Chapters, sand → end user</div>
-        <div><b>30+</b>Infographics & diagrams</div>
+        <div><b>20+</b>Infographics & diagrams</div>
         <div><b>80+</b>Companies & their moats</div>
         <div><b>4</b>Parts, one supply chain</div>
       </div>
@@ -282,16 +301,32 @@ footer b{color:#dce7f6}
     <div class="wrap">
       <div class="chapnum">Read Me First</div>
       <h2 class="chap">How to read this book</h2>
-      <p class="lede">You don't need any background in physics, computers, or finance. Every chapter follows the journey of one tiny grain of sand as it becomes part of a thinking machine — and at every step we ask the only question an investor cares about: <em>who controls this step, and can anyone else do it?</em></p>
+      <p class="lede">This is a textbook, not a stock pitch. Its purpose is to give you the durable mental model of the AI infrastructure industry, so that any piece of news, earnings call, or product launch can be slotted into place. Specific tickers will rise and fall. The underlying physics, chemistry, and choke points will not.</p>
 
-      <p>Artificial intelligence feels like software — a chatbot, an app, something that lives "in the cloud." But underneath every AI answer is a staggering amount of <strong>physical stuff</strong>: ultra-pure sand, billion-dollar machines, buildings the size of shopping malls, and enough electricity to power a city. The companies that own the hard-to-copy steps in this physical chain are quietly some of the most valuable businesses on Earth.</p>
+      <p>You don't need any background in physics, computers, or finance. AI feels like software — a chatbot, an app, something that lives "in the cloud." But underneath every AI answer is a staggering amount of <strong>physical stuff</strong>: ultra-pure sand, billion-dollar machines, buildings the size of shopping malls, and enough electricity to power a city. The companies that own the hard-to-copy steps in this physical chain are quietly some of the most valuable businesses on Earth.</p>
 
-      <p>This book is your map of that chain, from the dirt to the data center. You'll meet recurring guides in colored boxes:</p>
+      <p>Every chapter follows the same <strong>four-question framework</strong>. Once you internalize it, you can apply it to any new company, technology, or layer of the stack you ever encounter:</p>
 
+      <div class="qgrid">
+        <div class="qcard"><div class="qn">Question 01</div><h5>What does this step actually do?</h5><p>Its physical or logical job, stripped of jargon. If you can't explain it in two sentences, you don't understand it yet.</p></div>
+        <div class="qcard"><div class="qn">Question 02</div><h5>Who are the players?</h5><p>The companies that own this step — ranked by structural position, not today's market cap.</p></div>
+        <div class="qcard"><div class="qn">Question 03</div><h5>What is the moat?</h5><p>Why a new entrant can't show up tomorrow and take this business. Scored from weak to strong.</p></div>
+        <div class="qcard"><div class="qn">Question 04</div><h5>What could break it?</h5><p>The emerging technology, geopolitical event, or business-model shift that could erode the moat.</p></div>
+      </div>
+
+      <p>Throughout, you'll see a <strong>moat-strength scale</strong> that rates how defensible each position is:</p>
+      <div class="moatscale">
+        <div class="moatrow"><span class="dots"><span class="dot f"></span><span class="dot f"></span><span class="dot f"></span><span class="dot f"></span><span class="dot f"></span></span><span><b>Fortress</b> — a true monopoly or near-monopoly with no credible challenger in sight.</span></div>
+        <div class="moatrow"><span class="dots"><span class="dot f"></span><span class="dot f"></span><span class="dot f"></span><span class="dot f"></span><span class="dot"></span></span><span><b>Strong</b> — dominant share with high switching costs, but plausible challengers exist.</span></div>
+        <div class="moatrow"><span class="dots"><span class="dot m"></span><span class="dot m"></span><span class="dot m"></span><span class="dot"></span><span class="dot"></span></span><span><b>Contested</b> — several credible players; the advantage rests on execution.</span></div>
+        <div class="moatrow"><span class="dots"><span class="dot w"></span><span class="dot w"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span><span><b>Commodity</b> — low differentiation; profits compete down to the cost of capital.</span></div>
+      </div>
+
+      <p>And to keep things in plain English, four recurring guides appear in colored boxes:</p>
       <div class="callout plain"><span class="lab">🧒 Plain English</span><p>Translates a scary technical term into something you already understand. If you only read these, you'll still "get it."</p></div>
-      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>The "so what." Who makes money here, why, and how durable that advantage is. This is the Gavin Baker brain — thinking in moats and choke points.</p></div>
+      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>The "so what." Who makes money at this step, why, and how durable that advantage is — thinking in moats and choke points.</p></div>
       <div class="callout choke"><span class="lab">⛓️ Choke Point</span><p>A step where one or two companies (or one country) control almost everything. Choke points are where the biggest profits — and the biggest risks — live.</p></div>
-      <div class="callout emerging"><span class="lab">🚀 Emerging Disruption</span><p>The new technology that could rewrite the rules of a chapter. This is the Leopold Aschenbrenner brain — thinking about where the frontier goes next.</p></div>
+      <div class="callout emerging"><span class="lab">🚀 Emerging Disruption</span><p>The new technology that could rewrite the rules of a chapter — where the frontier goes next, and what could break today's moat.</p></div>
 
       <div class="disclaimer"><strong>Important:</strong> This is an educational explainer, not investment advice. Company names and tickers are examples used to illustrate how the industry is structured — not recommendations to buy or sell anything. Figures are <em>round, illustrative approximations</em> chosen to build intuition; real numbers move constantly. Always do your own research and speak to a licensed professional before investing.</p></div>
     </div>
@@ -398,97 +433,104 @@ footer b{color:#dce7f6}
     <div class="wrap">
       <div class="chapnum">Chapter 1</div>
       <h2 class="chap">The Whole Map: from a grain of sand to a chatbot</h2>
-      <p class="lede">Let's see the entire journey on one page first. Don't worry about understanding every step yet — each one gets its own chapter. The goal right now is to feel the <em>shape</em> of the chain and notice how few companies stand at each gate.</p>
+      <p class="lede">Building and running an AI model is a physical act. Somewhere on Earth, sand is melted, refined to a purity human language strains to describe, and patterned by ultraviolet light into structures a few atoms wide. Those structures are stacked into chips, wired together with copper and glass, bathed in liquid coolant, and fed continuous electricity. The industry that does all of this is one continuous chain — and to understand any link, you have to see the whole.</p>
 
-      <p>When you type a question into an AI and get an answer, you are firing the last step of a chain that began years earlier inside a sand quarry. Nine big stages turn that sand into an answer. At each stage, money changes hands — and at most stages, a tiny number of companies take the lion's share.</p>
+      <p>So let's put the entire stack on one page before we zoom in. Don't worry about understanding every layer yet — each one gets its own chapter. The goal right now is to feel the <em>shape</em> of the chain and notice how few companies stand at each gate.</p>
 
       <div class="fig">
         <p class="fig-title">Figure 1.1</p>
-        <p class="fig-sub">The end-to-end AI pipeline — nine stages, sand to answer</p>
-        <svg viewBox="0 0 920 470" role="img" aria-label="Nine-stage AI supply chain pipeline">
-          <defs>
-            <linearGradient id="pipe" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#f5852a"/><stop offset=".5" stop-color="#39bdf8"/><stop offset="1" stop-color="#22b06b"/>
-            </linearGradient>
-            <marker id="ar" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 Z" fill="#7f93b3"/></marker>
-          </defs>
-          <!-- connecting spine -->
-          <path d="M70 60 H850" stroke="url(#pipe)" stroke-width="5" fill="none" opacity=".35"/>
-          <!-- rows of 3 -->
-          <g font-family="inherit" text-anchor="middle">
-            <!-- node generator: 9 nodes in 3 rows -->
-            <!-- Row helper -->
-            <!-- Stage 1 -->
-            <g transform="translate(70,40)">
-              <circle cx="40" cy="20" r="20" fill="#f5852a"/><text x="40" y="27" font-size="18" fill="#fff" font-weight="800">1</text>
-              <text x="40" y="62" font-size="13" font-weight="800" fill="#fff">Raw Earth</text>
-              <text x="40" y="80" font-size="11" fill="#9fb3d1">Pure sand &amp; gases</text>
-              <text x="40" y="96" font-size="10.5" fill="#d6a52a" font-weight="700">Shin-Etsu · Linde</text>
-            </g>
-            <g transform="translate(330,40)">
-              <circle cx="40" cy="20" r="20" fill="#f5852a"/><text x="40" y="27" font-size="18" fill="#fff" font-weight="800">2</text>
-              <text x="40" y="62" font-size="13" font-weight="800" fill="#fff">Blueprint</text>
-              <text x="40" y="80" font-size="11" fill="#9fb3d1">Design software</text>
-              <text x="40" y="96" font-size="10.5" fill="#d6a52a" font-weight="700">Synopsys · ARM</text>
-            </g>
-            <g transform="translate(590,40)">
-              <circle cx="40" cy="20" r="20" fill="#f5852a"/><text x="40" y="27" font-size="18" fill="#fff" font-weight="800">3</text>
-              <text x="40" y="62" font-size="13" font-weight="800" fill="#fff">Printing</text>
-              <text x="40" y="80" font-size="11" fill="#9fb3d1">Lithography + fab</text>
-              <text x="40" y="96" font-size="10.5" fill="#d6a52a" font-weight="700">ASML · TSMC</text>
-            </g>
-            <!-- down arrows row1->row2 -->
-            <path d="M670 150 H110 V190" stroke="#7f93b3" stroke-width="2" fill="none" marker-end="url(#ar)" opacity=".6"/>
-            <!-- Stage 4 -->
-            <g transform="translate(70,200)">
-              <circle cx="40" cy="20" r="20" fill="#39bdf8"/><text x="40" y="27" font-size="18" fill="#0d1b2e" font-weight="800">4</text>
-              <text x="40" y="62" font-size="13" font-weight="800" fill="#fff">Packaging</text>
-              <text x="40" y="80" font-size="11" fill="#9fb3d1">Chip + memory fused</text>
-              <text x="40" y="96" font-size="10.5" fill="#d6a52a" font-weight="700">TSMC CoWoS</text>
-            </g>
-            <g transform="translate(330,200)">
-              <circle cx="40" cy="20" r="20" fill="#39bdf8"/><text x="40" y="27" font-size="18" fill="#0d1b2e" font-weight="800">5</text>
-              <text x="40" y="62" font-size="13" font-weight="800" fill="#fff">The Brain</text>
-              <text x="40" y="80" font-size="11" fill="#9fb3d1">GPU / TPU / ASIC</text>
-              <text x="40" y="96" font-size="10.5" fill="#d6a52a" font-weight="700">NVIDIA · Broadcom</text>
-            </g>
-            <g transform="translate(590,200)">
-              <circle cx="40" cy="20" r="20" fill="#39bdf8"/><text x="40" y="27" font-size="18" fill="#0d1b2e" font-weight="800">6</text>
-              <text x="40" y="62" font-size="13" font-weight="800" fill="#fff">Wiring</text>
-              <text x="40" y="80" font-size="11" fill="#9fb3d1">Copper &amp; light links</text>
-              <text x="40" y="96" font-size="10.5" fill="#d6a52a" font-weight="700">Astera · Lumentum</text>
-            </g>
-            <path d="M670 310 H110 V350" stroke="#7f93b3" stroke-width="2" fill="none" marker-end="url(#ar)" opacity=".6"/>
-            <!-- Stage 7 -->
-            <g transform="translate(70,360)">
-              <circle cx="40" cy="20" r="20" fill="#22b06b"/><text x="40" y="27" font-size="18" fill="#fff" font-weight="800">7</text>
-              <text x="40" y="62" font-size="13" font-weight="800" fill="#fff">Cooling</text>
-              <text x="40" y="80" font-size="11" fill="#9fb3d1">Liquid heat removal</text>
-              <text x="40" y="96" font-size="10.5" fill="#d6a52a" font-weight="700">Vertiv · Modine</text>
-            </g>
-            <g transform="translate(330,360)">
-              <circle cx="40" cy="20" r="20" fill="#22b06b"/><text x="40" y="27" font-size="18" fill="#fff" font-weight="800">8</text>
-              <text x="40" y="62" font-size="13" font-weight="800" fill="#fff">Power</text>
-              <text x="40" y="80" font-size="11" fill="#9fb3d1">Grid · gas · nuclear</text>
-              <text x="40" y="96" font-size="10.5" fill="#d6a52a" font-weight="700">Vistra · Bloom</text>
-            </g>
-            <g transform="translate(590,360)">
-              <circle cx="40" cy="20" r="20" fill="#22b06b"/><text x="40" y="27" font-size="18" fill="#fff" font-weight="800">9</text>
-              <text x="40" y="62" font-size="13" font-weight="800" fill="#fff">The Answer</text>
-              <text x="40" y="80" font-size="11" fill="#9fb3d1">Model serves users</text>
-              <text x="40" y="96" font-size="10.5" fill="#d6a52a" font-weight="700">OpenAI · CoreWeave</text>
-            </g>
-            <!-- arrows along row1 -->
-            <path d="M150 60 H330" stroke="#7f93b3" stroke-width="2" marker-end="url(#ar)" opacity=".6"/>
-            <path d="M410 60 H590" stroke="#7f93b3" stroke-width="2" marker-end="url(#ar)" opacity=".6"/>
-            <path d="M150 220 H330" stroke="#7f93b3" stroke-width="2" marker-end="url(#ar)" opacity=".6"/>
-            <path d="M410 220 H590" stroke="#7f93b3" stroke-width="2" marker-end="url(#ar)" opacity=".6"/>
-            <path d="M150 380 H330" stroke="#7f93b3" stroke-width="2" marker-end="url(#ar)" opacity=".6"/>
-            <path d="M410 380 H590" stroke="#7f93b3" stroke-width="2" marker-end="url(#ar)" opacity=".6"/>
+        <p class="fig-sub">The AI infrastructure stack, end to end</p>
+        <svg viewBox="0 0 920 590" role="img" aria-label="The AI infrastructure stack from materials to power, with players and highlighted high-pricing-power layers">
+          <g font-family="inherit">
+            <!-- column headers -->
+            <text x="40" y="34" font-size="10.5" fill="#7f93b3" font-weight="700" letter-spacing="2">LAYER</text>
+            <text x="338" y="34" font-size="10.5" fill="#7f93b3" font-weight="700" letter-spacing="2">WHAT IT DOES</text>
+            <text x="660" y="34" font-size="10.5" fill="#7f93b3" font-weight="700" letter-spacing="2">REPRESENTATIVE PLAYERS</text>
+            <line x1="40" y1="44" x2="900" y2="44" stroke="#26405f" stroke-width="1"/>
+            <!-- row template: y, fill, accent, num, title, what1, what2, players1, players2 -->
+            <!-- L1 -->
+            <g><rect x="40" y="54" width="860" height="62" rx="8" fill="#16263f" stroke="#26405f"/>
+              <rect x="40" y="54" width="5" height="62" rx="2" fill="#7f93b3"/>
+              <text x="58" y="78" font-size="9.5" fill="#f5852a" font-weight="700" letter-spacing="2">LAYER 01</text>
+              <text x="58" y="100" font-size="15" fill="#fff" font-weight="800">Materials &amp; Chemistry</text>
+              <text x="338" y="80" font-size="12" fill="#cfe0f5">Pure silicon, photoresist, specialty gases,</text>
+              <text x="338" y="98" font-size="12" fill="#cfe0f5">rare earths — the atoms before the chip.</text>
+              <text x="660" y="80" font-size="11" fill="#d6a52a" font-weight="700">Shin-Etsu · SUMCO</text>
+              <text x="660" y="98" font-size="11" fill="#d6a52a" font-weight="700">Linde · Entegris</text></g>
+            <!-- L2 -->
+            <g><rect x="40" y="120" width="860" height="62" rx="8" fill="#16263f" stroke="#26405f"/>
+              <rect x="40" y="120" width="5" height="62" rx="2" fill="#7f93b3"/>
+              <text x="58" y="144" font-size="9.5" fill="#f5852a" font-weight="700" letter-spacing="2">LAYER 02</text>
+              <text x="58" y="166" font-size="15" fill="#fff" font-weight="800">Design &amp; EDA Software</text>
+              <text x="338" y="146" font-size="12" fill="#cfe0f5">The blueprint: software that simulates</text>
+              <text x="338" y="164" font-size="12" fill="#cfe0f5">billions of transistors before they exist.</text>
+              <text x="660" y="146" font-size="11" fill="#d6a52a" font-weight="700">Synopsys · Cadence</text>
+              <text x="660" y="164" font-size="11" fill="#d6a52a" font-weight="700">Siemens EDA · Arm</text></g>
+            <!-- L3 highlighted -->
+            <g><rect x="40" y="186" width="860" height="62" rx="8" fill="#243d28" stroke="#d6a52a" stroke-width="1.5"/>
+              <rect x="40" y="186" width="5" height="62" rx="2" fill="#d6a52a"/>
+              <text x="58" y="210" font-size="9.5" fill="#f4e6bd" font-weight="700" letter-spacing="2">LAYER 03 ★</text>
+              <text x="58" y="232" font-size="15" fill="#fff" font-weight="800">Lithography &amp; Fabrication</text>
+              <text x="338" y="212" font-size="12" fill="#f4e6bd">Printing patterns onto wafers with UV light —</text>
+              <text x="338" y="230" font-size="12" fill="#f4e6bd">the most concentrated bottleneck in the chain.</text>
+              <text x="660" y="212" font-size="11" fill="#fff" font-weight="700">ASML · TSMC · KLA</text>
+              <text x="660" y="230" font-size="11" fill="#fff" font-weight="700">Applied · Lam · TEL</text></g>
+            <!-- L4 -->
+            <g><rect x="40" y="252" width="860" height="62" rx="8" fill="#16263f" stroke="#26405f"/>
+              <rect x="40" y="252" width="5" height="62" rx="2" fill="#7f93b3"/>
+              <text x="58" y="276" font-size="9.5" fill="#f5852a" font-weight="700" letter-spacing="2">LAYER 04</text>
+              <text x="58" y="298" font-size="15" fill="#fff" font-weight="800">Advanced Packaging</text>
+              <text x="338" y="278" font-size="12" fill="#cfe0f5">Bonding logic chips to memory stacks on a</text>
+              <text x="338" y="296" font-size="12" fill="#cfe0f5">shared silicon floor — the 2024+ bottleneck.</text>
+              <text x="660" y="278" font-size="11" fill="#d6a52a" font-weight="700">TSMC (CoWoS) · Besi</text>
+              <text x="660" y="296" font-size="11" fill="#d6a52a" font-weight="700">ASE · Amkor · Intel</text></g>
+            <!-- L5 highlighted -->
+            <g><rect x="40" y="318" width="860" height="62" rx="8" fill="#243d28" stroke="#d6a52a" stroke-width="1.5"/>
+              <rect x="40" y="318" width="5" height="62" rx="2" fill="#d6a52a"/>
+              <text x="58" y="342" font-size="9.5" fill="#f4e6bd" font-weight="700" letter-spacing="2">LAYER 05 ★</text>
+              <text x="58" y="364" font-size="15" fill="#fff" font-weight="800">Compute &amp; Memory</text>
+              <text x="338" y="344" font-size="12" fill="#f4e6bd">GPUs, ASICs, HBM — the chips themselves,</text>
+              <text x="338" y="362" font-size="12" fill="#f4e6bd">where the math actually happens.</text>
+              <text x="660" y="344" font-size="11" fill="#fff" font-weight="700">NVIDIA · AMD · Broadcom</text>
+              <text x="660" y="362" font-size="11" fill="#fff" font-weight="700">SK Hynix · Micron · Samsung</text></g>
+            <!-- L6 -->
+            <g><rect x="40" y="384" width="860" height="62" rx="8" fill="#16263f" stroke="#26405f"/>
+              <rect x="40" y="384" width="5" height="62" rx="2" fill="#7f93b3"/>
+              <text x="58" y="408" font-size="9.5" fill="#f5852a" font-weight="700" letter-spacing="2">LAYER 06</text>
+              <text x="58" y="430" font-size="15" fill="#fff" font-weight="800">Networking &amp; Interconnect</text>
+              <text x="338" y="410" font-size="12" fill="#cfe0f5">Wires and optics that lash thousands of</text>
+              <text x="338" y="428" font-size="12" fill="#cfe0f5">chips into one logical supercomputer.</text>
+              <text x="660" y="410" font-size="11" fill="#d6a52a" font-weight="700">Astera Labs · Arista</text>
+              <text x="660" y="428" font-size="11" fill="#d6a52a" font-weight="700">Marvell · Coherent · Lumentum</text></g>
+            <!-- L7 -->
+            <g><rect x="40" y="450" width="860" height="62" rx="8" fill="#16263f" stroke="#26405f"/>
+              <rect x="40" y="450" width="5" height="62" rx="2" fill="#7f93b3"/>
+              <text x="58" y="474" font-size="9.5" fill="#f5852a" font-weight="700" letter-spacing="2">LAYER 07</text>
+              <text x="58" y="496" font-size="15" fill="#fff" font-weight="800">Cooling &amp; Mechanical</text>
+              <text x="338" y="476" font-size="12" fill="#cfe0f5">Liquid coolant, pumps, manifolds, racks.</text>
+              <text x="338" y="494" font-size="12" fill="#cfe0f5">Heat is the new constraint.</text>
+              <text x="660" y="476" font-size="11" fill="#d6a52a" font-weight="700">Vertiv · Schneider</text>
+              <text x="660" y="494" font-size="11" fill="#d6a52a" font-weight="700">nVent · Modine</text></g>
+            <!-- L8 highlighted -->
+            <g><rect x="40" y="516" width="860" height="62" rx="8" fill="#243d28" stroke="#d6a52a" stroke-width="1.5"/>
+              <rect x="40" y="516" width="5" height="62" rx="2" fill="#d6a52a"/>
+              <text x="58" y="540" font-size="9.5" fill="#f4e6bd" font-weight="700" letter-spacing="2">LAYER 08 ★</text>
+              <text x="58" y="562" font-size="15" fill="#fff" font-weight="800">Power &amp; Grid</text>
+              <text x="338" y="542" font-size="12" fill="#f4e6bd">Substations, transformers, generation —</text>
+              <text x="338" y="560" font-size="12" fill="#f4e6bd">the new binding constraint of the whole stack.</text>
+              <text x="660" y="542" font-size="11" fill="#fff" font-weight="700">Constellation · Vistra</text>
+              <text x="660" y="560" font-size="11" fill="#fff" font-weight="700">Eaton · GE Vernova · Bloom</text></g>
           </g>
         </svg>
-        <p class="fig-cap">Orange = raw inputs &amp; manufacturing · Blue = the chip itself &amp; its wiring · Green = the building, its power, and the live AI service. The rest of Part I–III walks these nine stages one by one.</p>
+        <p class="fig-cap"><strong>★ Gold rows = highest pricing power.</strong> Lithography, compute, and power capture most of the industry's profit; the other layers are essential but earn more commodity-like margins. The chain runs both ways: a 2-year ASML delivery slip ripples <em>up</em> the stack; a grid shortfall ripples <em>down</em> it.</p>
       </div>
+
+      <p>Three things to notice about this stack before we go deeper:</p>
+      <ul>
+        <li><strong>The chain is only as fast as its slowest link.</strong> In 2023 the bottleneck was wafer production. By 2024 it had moved to advanced packaging. By 2025, to electricity. The <em>location</em> of the bottleneck moves; the <em>existence</em> of one is permanent. (Chapter 15 traces this rotation in detail.)</li>
+        <li><strong>Value capture is wildly uneven.</strong> Three layers — lithography, compute, and power — capture most of the industry's economic rent. The others are necessary, sometimes critical, but operate on thinner margins. Knowing where the rent pools is half of investment analysis.</li>
+        <li><strong>Geographic concentration is extreme.</strong> One company in the Netherlands makes every cutting-edge lithography machine on Earth. One company in Taiwan manufactures most leading-edge logic chips. A few firms in South Korea and the US make nearly all advanced AI memory. Every shock to this geography matters.</li>
+      </ul>
 
       <h3>The same journey, told as a story</h3>
       <p>Imagine following one shipment from start to finish:</p>
@@ -586,7 +628,7 @@ footer b{color:#dce7f6}
         <dt>Tungsten hexafluoride (WF₆)</dt><dd>Used to lay down ultra-thin metal wiring that connects the transistor layers, like microscopic plumbing.</dd>
       </dl>
 
-      <div class="callout choke"><span class="lab">⛓️ Choke Point</span><p>Helium has no substitute and no synthetic source. A few industrial-gas giants — <strong>Linde</strong>, <strong>Air Liquide</strong>, <strong>Air Products</strong> — control gathering, purifying, and shipping these gases worldwide. They're boring, unglamorous, and quietly indispensable: the definition of a picks-and-shovels toll booth.</p></div>
+      <div class="callout choke"><span class="lab">⛓️ Choke Point</span><p>Helium has no substitute and no synthetic source. A few industrial-gas giants — <strong>Linde (LIN)</strong>, <strong>Air Liquide</strong>, <strong>Air Products (APD)</strong> — control gathering, purifying, and shipping these gases worldwide. They're boring, unglamorous, and quietly indispensable: the definition of a picks-and-shovels toll booth.</p></div>
 
       <h3>The rare metals — and the geopolitics baked into every chip</h3>
       <p>Beyond silicon, chips and data centers need a pantry of unusual metals. Here's where the story turns geopolitical: the <em>mining</em> and especially the <em>refining</em> of these materials is concentrated in just a few countries — and one country, China, dominates the refining of many of them. Refining is the real choke point, because building a new refinery is dirty, slow, and capital-intensive.</p>
@@ -604,9 +646,13 @@ footer b{color:#dce7f6}
       </table>
       </div>
 
-      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>Notice the pattern: the <strong>resource moat</strong> here belongs less to whoever owns the dirt and more to whoever owns the <strong>refining</strong>. That's why "rare earth" headlines are really about processing capacity and export policy. For investors this is a double-edged sword — enormous pricing power, but exposed to government decisions overnight. Western efforts to build independent refining (e.g. <span class="tk">MP</span> MP Materials in the US, Lynas in Australia) are a direct bet that this choke point is too dangerous to leave concentrated.</p></div>
+      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>Notice the pattern: the <strong>resource moat</strong> here belongs less to whoever owns the dirt and more to whoever owns the <strong>refining</strong>. That's why "rare earth" headlines are really about processing capacity and export policy. For investors this is a double-edged sword — enormous pricing power, but exposed to government decisions overnight. Western efforts to build independent refining (e.g. <strong>MP Materials (MP)</strong> in the US, <strong>Lynas (LYC)</strong> in Australia) are a direct bet that this choke point is too dangerous to leave concentrated.</p></div>
 
-      <div class="callout emerging"><span class="lab">🚀 Emerging Disruption</span><p><strong>Synthetic diamond heat-spreaders.</strong> As chips get hotter, silicon hits a physical wall. Companies like <strong>Element Six</strong> (a De Beers unit) and <strong>Coherent</strong> grow lab-made diamond, which carries heat ~5× better than copper. Bonding diamond to a chip could let it run at far higher power without melting — potentially extending the whole industry's runway. Watch this as a "wildcard" materials bet.</p></div>
+      <div class="callout emerging"><span class="lab">🚀 Emerging Disruption</span>
+        <p><strong>Synthetic diamond substrates.</strong> As chips run hotter, the silicon itself becomes a thermal bottleneck — heat can't escape fast enough through copper. Synthetic diamond, grown by a process called chemical vapor deposition (CVD), conducts heat about <strong>five times better than copper</strong>, and could let chips run at roughly double the power density without overheating.</p>
+        <p>The two companies furthest along: <strong>Element Six</strong>, a UK-based subsidiary of <strong>De Beers</strong> (privately held, no ticker), is the clear leader — it launched a commercial copper-diamond composite called <em>Cu-Diamond</em> at Photonics West in January 2025, with thermal conductivity around 800 W/mK (roughly double copper's), and it partners with Japan's Orbray on wafer-scale single-crystal diamond. So this is past proof-of-concept and into early revenue, though still small versus traditional thermal materials. <strong>Coherent (COHR)</strong> — also covered in the interconnects chapter for optical components — participates through related thermal and optical applications rather than as a direct Cu-Diamond competitor.</p>
+        <p>The watch item is adoption inside leading-edge AI accelerator packages. <strong>If TSMC or a hyperscaler designs diamond heat-spreaders into a production AI chip, that's the inflection.</strong> As of writing it is being evaluated rather than designed-in at volume.</p>
+      </div>
     </div>
   </section>
 
@@ -656,13 +702,13 @@ footer b{color:#dce7f6}
       </div>
 
       <h3>EDA: the three companies that gate everyone</h3>
-      <p>You cannot design a competitive modern chip without software from essentially three companies: <strong>Synopsys</strong>, <strong>Cadence</strong>, and <strong>Siemens EDA</strong>. NVIDIA, Apple, Google, and every startup all pay them. Their moat is a beautiful flywheel: they work hand-in-glove with the factories (like TSMC), so their tools are <em>certified</em> for each new manufacturing process. No serious factory will print a design that wasn't verified in trusted tools — so trust itself becomes the moat.</p>
+      <p>You cannot design a competitive modern chip without software from essentially three companies: <strong>Synopsys (SNPS)</strong>, <strong>Cadence (CDNS)</strong>, and <strong>Siemens EDA</strong>. <strong>NVIDIA (NVDA)</strong>, <strong>Apple (AAPL)</strong>, <strong>Google (GOOGL)</strong>, and every startup all pay them. Their moat is a beautiful flywheel: they work hand-in-glove with the factories (like TSMC), so their tools are <em>certified</em> for each new manufacturing process. No serious factory will print a design that wasn't verified in trusted tools — so trust itself becomes the moat.</p>
 
       <h3>IP: who owns the chip's "language"</h3>
       <p>Every chip understands a set of basic commands called an <strong>instruction set</strong>. Three matter:</p>
       <ul>
-        <li><strong>ARM</strong> — licensed into almost every smartphone and increasingly into data centers. Its moat is the ultimate network effect: millions of programs are already written for it.</li>
-        <li><strong>x86</strong> — owned by <strong>Intel</strong> and <strong>AMD</strong>, the long-time king of PCs and servers.</li>
+        <li><strong>ARM (ARM)</strong> — licensed into almost every smartphone and increasingly into data centers. Its moat is the ultimate network effect: millions of programs are already written for it.</li>
+        <li><strong>x86</strong> — owned by <strong>Intel (INTC)</strong> and <strong>AMD (AMD)</strong>, the long-time king of PCs and servers.</li>
         <li><strong>RISC-V</strong> — a free, open standard anyone can use. It's the disruptor: no license fees, no single owner. Companies adopt it to escape paying the toll.</li>
       </ul>
 
@@ -690,7 +736,7 @@ footer b{color:#dce7f6}
       <div class="fig">
         <p class="fig-title">Figure 4.1</p>
         <p class="fig-sub">Inside an EUV machine — simplified</p>
-        <svg viewBox="0 0 920 230" role="img" aria-label="How an EUV lithography machine works">
+        <svg viewBox="0 56 920 118" role="img" aria-label="How an EUV lithography machine works">
           <g font-family="inherit" text-anchor="middle">
             <g transform="translate(20,70)">
               <rect width="150" height="90" rx="10" fill="#16263f" stroke="#26405f"/>
@@ -731,13 +777,13 @@ footer b{color:#dce7f6}
         <p class="fig-cap">Only <strong>ASML</strong> (Netherlands) makes EUV machines — a 100% monopoly. The next generation, <strong>High-NA EUV</strong>, prints even finer and costs roughly double.</p>
       </div>
 
-      <div class="callout choke"><span class="lab">⛓️ Choke Point</span><p>This is the single most concentrated choke point in the entire economy. <strong>ASML</strong> has a literal 100% monopoly on EUV — the only path to the most advanced chips. It took 30 years and an entire ecosystem of suppliers (like <strong>Zeiss</strong> for the mirrors and <strong>Cymer</strong> for the light source) to build one. This is why export controls on "who is allowed to buy an ASML machine" are front-page geopolitics.</p></div>
+      <div class="callout choke"><span class="lab">⛓️ Choke Point</span><p>This is the single most concentrated choke point in the entire economy. <strong>ASML (ASML)</strong> has a literal 100% monopoly on EUV — the only path to the most advanced chips. It took 30 years and an entire ecosystem of suppliers (like <strong>Zeiss</strong> for the mirrors and <strong>Cymer</strong> for the light source, both now tightly tied to ASML) to build one. This is why export controls on "who is allowed to buy an ASML machine" are front-page geopolitics.</p></div>
 
       <h3>The foundry: fabless vs. integrated</h3>
       <p>Owning the machine isn't enough — you need a factory (a <strong>fab</strong>) and the secret recipes to run it at high <em>yield</em> (the share of chips that come out working, not defective). Two business models split the industry:</p>
       <ul>
-        <li><strong>Fabless + foundry.</strong> A "fabless" designer (NVIDIA, Apple, AMD) designs the chip but owns no factory. They hand the blueprint to a <strong>foundry</strong> — a for-hire factory — to print it. The dominant foundry is <strong>TSMC</strong> (Taiwan).</li>
-        <li><strong>Integrated (IDM).</strong> One company designs <em>and</em> builds, like <strong>Intel</strong> and <strong>Samsung</strong>. Intel is now also trying to become a for-hire foundry.</li>
+        <li><strong>Fabless + foundry.</strong> A "fabless" designer (NVIDIA, Apple, AMD) designs the chip but owns no factory. They hand the blueprint to a <strong>foundry</strong> — a for-hire factory — to print it. The dominant foundry is <strong>TSMC (TSM)</strong> (Taiwan).</li>
+        <li><strong>Integrated (IDM).</strong> One company designs <em>and</em> builds, like <strong>Intel (INTC)</strong> and <strong>Samsung</strong> (Korea-listed). Intel is now also trying to become a for-hire foundry.</li>
       </ul>
 
       <h3>The "nanometer" ladder — and why it matters</h3>
@@ -786,7 +832,7 @@ footer b{color:#dce7f6}
       <div class="fig">
         <p class="fig-title">Figure 5.1</p>
         <p class="fig-sub">Cross-section of a modern AI accelerator package (e.g. TSMC CoWoS)</p>
-        <svg viewBox="0 0 920 270" role="img" aria-label="Cross section of an AI chip package with logic die and HBM memory stacks on an interposer">
+        <svg viewBox="0 46 920 200" role="img" aria-label="Cross section of an AI chip package with logic die and HBM memory stacks on an interposer">
           <g font-family="inherit">
             <!-- substrate -->
             <rect x="80" y="200" width="760" height="34" rx="6" fill="#3a2c12" stroke="#d6a52a"/>
@@ -817,10 +863,9 @@ footer b{color:#dce7f6}
             <text x="195" y="72" font-size="11" fill="#9fb3d1" text-anchor="middle">like a skyscraper</text>
             <text x="725" y="58" font-size="11" fill="#9fb3d1" text-anchor="middle">memory stacked</text>
             <text x="725" y="72" font-size="11" fill="#9fb3d1" text-anchor="middle">like a skyscraper</text>
-            <text x="460" y="258" font-size="11.5" fill="#7f93b3" text-anchor="middle">The brain sits inches — really millimeters — from its memory, so almost no time is wasted fetching data.</text>
           </g>
         </svg>
-        <p class="fig-cap">Logic in the middle, towers of <strong>HBM memory</strong> on the sides, all sitting on a <strong>silicon interposer</strong>. TSMC's version is called <strong>CoWoS</strong>; Intel's competing approach is <strong>EMIB</strong>.</p>
+        <p class="fig-cap">Logic in the middle, towers of <strong>HBM memory</strong> on the sides, all sitting on a <strong>silicon interposer</strong> — the brain ends up just millimeters from its memory, so almost no time is wasted fetching data. TSMC's version of this floor is called <strong>CoWoS</strong>; Intel's competing approach is <strong>EMIB</strong>.</p>
       </div>
 
       <h3>Chiplets: building chips like LEGO</h3>
@@ -830,9 +875,9 @@ footer b{color:#dce7f6}
 
       <div class="callout choke"><span class="lab">⛓️ Choke Point</span><p>Here's the kicker: the company that makes the best chips (<strong>TSMC</strong>) <em>also</em> dominates the best advanced packaging (CoWoS). So the same company is the bottleneck twice. For years, the limiting factor on how many top AI chips the world can build hasn't been the chip — it's been packaging capacity. When you read "AI chips are supply-constrained," this is usually why.</p></div>
 
-      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>Packaging turned a sleepy back-end step into a front-line moat. Watch three things: (1) TSMC's CoWoS capacity expansions — they gate the entire GPU supply; (2) <strong>OSAT</strong> firms (outsourced assembly &amp; test) like <strong>ASE Group</strong> and <strong>Amkor</strong> that handle packaging for others; (3) equipment makers whose tools do the stacking and bonding (e.g. <strong>BE Semiconductor / Besi</strong>, <strong>Applied Materials</strong>, <strong>Lam Research</strong>). When a single step gates the whole industry, the suppliers to that step are a leveraged bet on it.</p></div>
+      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>Packaging turned a sleepy back-end step into a front-line moat. Watch three things: (1) TSMC's CoWoS capacity expansions — they gate the entire GPU supply; (2) <strong>OSAT</strong> firms (outsourced assembly &amp; test) like <strong>ASE Group (ASX)</strong> and <strong>Amkor (AMKR)</strong> that handle packaging for others; (3) equipment makers whose tools do the stacking and bonding (e.g. <strong>BE Semiconductor / Besi (BESI)</strong>, <strong>Applied Materials (AMAT)</strong>, <strong>Lam Research (LRCX)</strong>). When a single step gates the whole industry, the suppliers to that step are a leveraged bet on it.</p></div>
 
-      <div class="callout emerging"><span class="lab">🚀 Emerging Disruption</span><p><strong>Glass substrates &amp; panel-level packaging.</strong> The next leap is replacing the base material with <strong>glass</strong>, which stays flatter and lets even more chiplets pack together — and building packages on big rectangular <em>panels</em> instead of round wafers to cut cost. Intel, Samsung, and glassmakers like <strong>Corning</strong> are racing here. (More on glass <em>connections</em> in Chapter 9.)</p></div>
+      <div class="callout emerging"><span class="lab">🚀 Emerging Disruption</span><p><strong>Glass substrates &amp; panel-level packaging.</strong> The next leap is replacing the base material with <strong>glass</strong>, which stays flatter and lets even more chiplets pack together — and building packages on big rectangular <em>panels</em> instead of round wafers to cut cost. Intel, Samsung, and glassmakers like <strong>Corning (GLW)</strong> are racing here. (More on glass <em>connections</em> in Chapter 9.)</p></div>
     </div>
   </section>
 
@@ -853,7 +898,7 @@ footer b{color:#dce7f6}
       <div class="analogy"><div class="ic">🗂️</div><div><strong>Analogy:</strong> DRAM is your desktop — fast to reach, but cleared every night. NAND is the filing cabinet — slower, but it keeps your files forever. AI needs a <em>gigantic</em> desk (HBM), which is exactly the part that's hardest to make.</div></div>
 
       <h3>The big three — and why they all do the same thing at once</h3>
-      <p>Almost all the world's advanced memory comes from just three companies: <strong>Samsung</strong>, <strong>SK Hynix</strong> (both South Korea), and <strong>Micron</strong> (US). With so few players making a near-identical product, memory behaves like a <em>commodity</em> — like oil or wheat. And commodities are cyclical.</p>
+      <p>Almost all the world's advanced memory comes from just three companies: <strong>Samsung</strong> and <strong>SK Hynix</strong> (both Korea-listed) and <strong>Micron (MU)</strong> (US). With so few players making a near-identical product, memory behaves like a <em>commodity</em> — like oil or wheat. And commodities are cyclical.</p>
 
       <div class="fig">
         <p class="fig-title">Figure 6.1</p>
@@ -987,11 +1032,62 @@ footer b{color:#dce7f6}
         <p class="fig-cap">Notice the punchline: all three roads pass through the <strong>same two villages</strong> — TSMC (making/packaging) and the big-three HBM makers (memory). The chip designs differ; the deep supply-chain choke points are shared.</p>
       </div>
 
+      <h3>What's actually inside an AI GPU?</h3>
+      <p>A CPU (the chip in your laptop) does a few tasks very fast, one after another — a sprinter. A GPU does <em>many</em> tasks at once, each slightly slower — a marathon of ten thousand runners moving together. For matrix math, that parallel approach wins overwhelmingly. But here's the surprise when you open the package: an AI GPU is <strong>mostly memory</strong>.</p>
+
+      <div class="fig">
+        <p class="fig-title">Figure 7.2</p>
+        <p class="fig-sub">A GPU's anatomy at a glance</p>
+        <svg viewBox="0 0 920 410" role="img" aria-label="Anatomy of an AI GPU package: logic die surrounded by HBM memory stacks">
+          <g font-family="inherit">
+            <rect x="30" y="40" width="860" height="330" rx="10" fill="#0e2038" stroke="#39bdf8" stroke-width="1.5"/>
+            <text x="48" y="66" font-size="10.5" fill="#39bdf8" font-weight="700" letter-spacing="2">GPU PACKAGE</text>
+            <!-- HBM left -->
+            <g>
+              <rect x="60" y="96" width="84" height="240" rx="4" fill="#13b6a6"/>
+              <rect x="152" y="96" width="84" height="240" rx="4" fill="#13b6a6"/>
+              <g stroke="#0c8073" stroke-width="1">
+                <line x1="60" y1="130" x2="144" y2="130"/><line x1="60" y1="164" x2="144" y2="164"/><line x1="60" y1="198" x2="144" y2="198"/><line x1="60" y1="232" x2="144" y2="232"/><line x1="60" y1="266" x2="144" y2="266"/><line x1="60" y1="300" x2="144" y2="300"/>
+                <line x1="152" y1="130" x2="236" y2="130"/><line x1="152" y1="164" x2="236" y2="164"/><line x1="152" y1="198" x2="236" y2="198"/><line x1="152" y1="232" x2="236" y2="232"/><line x1="152" y1="266" x2="236" y2="266"/><line x1="152" y1="300" x2="236" y2="300"/>
+              </g>
+              <text x="102" y="116" font-size="10" fill="#06302c" font-weight="800" text-anchor="middle">HBM</text>
+              <text x="194" y="116" font-size="10" fill="#06302c" font-weight="800" text-anchor="middle">HBM</text>
+            </g>
+            <!-- Logic die center -->
+            <rect x="250" y="96" width="420" height="240" rx="6" fill="#1b3a63" stroke="#2f7df6" stroke-width="1.5"/>
+            <text x="460" y="124" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">GPU LOGIC DIE</text>
+            <!-- cores grid -->
+            <g fill="#39bdf8" opacity="0.85">
+              <rect x="268" y="142" width="26" height="20" rx="2"/><rect x="300" y="142" width="26" height="20" rx="2"/><rect x="332" y="142" width="26" height="20" rx="2"/><rect x="364" y="142" width="26" height="20" rx="2"/><rect x="396" y="142" width="26" height="20" rx="2"/><rect x="428" y="142" width="26" height="20" rx="2"/><rect x="460" y="142" width="26" height="20" rx="2"/><rect x="492" y="142" width="26" height="20" rx="2"/><rect x="524" y="142" width="26" height="20" rx="2"/><rect x="556" y="142" width="26" height="20" rx="2"/><rect x="588" y="142" width="26" height="20" rx="2"/><rect x="620" y="142" width="26" height="20" rx="2"/>
+              <rect x="268" y="168" width="26" height="20" rx="2"/><rect x="300" y="168" width="26" height="20" rx="2"/><rect x="332" y="168" width="26" height="20" rx="2"/><rect x="364" y="168" width="26" height="20" rx="2"/><rect x="396" y="168" width="26" height="20" rx="2"/><rect x="428" y="168" width="26" height="20" rx="2"/><rect x="460" y="168" width="26" height="20" rx="2"/><rect x="492" y="168" width="26" height="20" rx="2"/><rect x="524" y="168" width="26" height="20" rx="2"/><rect x="556" y="168" width="26" height="20" rx="2"/><rect x="588" y="168" width="26" height="20" rx="2"/><rect x="620" y="168" width="26" height="20" rx="2"/>
+            </g>
+            <text x="460" y="214" font-size="11.5" fill="#cfe0f5" text-anchor="middle" font-style="italic">thousands of small parallel cores</text>
+            <text x="460" y="232" font-size="11.5" fill="#cfe0f5" text-anchor="middle" font-style="italic">+ specialized tensor / matrix units</text>
+            <rect x="270" y="294" width="380" height="28" rx="4" fill="#d6a52a"/>
+            <text x="460" y="313" font-size="10.5" fill="#0d1b2e" font-weight="800" text-anchor="middle">NVLink / Infinity Fabric — chip-to-chip network on package</text>
+            <!-- HBM right -->
+            <g>
+              <rect x="684" y="96" width="84" height="240" rx="4" fill="#13b6a6"/>
+              <rect x="776" y="96" width="84" height="240" rx="4" fill="#13b6a6"/>
+              <g stroke="#0c8073" stroke-width="1">
+                <line x1="684" y1="130" x2="768" y2="130"/><line x1="684" y1="164" x2="768" y2="164"/><line x1="684" y1="198" x2="768" y2="198"/><line x1="684" y1="232" x2="768" y2="232"/><line x1="684" y1="266" x2="768" y2="266"/><line x1="684" y1="300" x2="768" y2="300"/>
+                <line x1="776" y1="130" x2="860" y2="130"/><line x1="776" y1="164" x2="860" y2="164"/><line x1="776" y1="198" x2="860" y2="198"/><line x1="776" y1="232" x2="860" y2="232"/><line x1="776" y1="266" x2="860" y2="266"/><line x1="776" y1="300" x2="860" y2="300"/>
+              </g>
+              <text x="726" y="116" font-size="10" fill="#06302c" font-weight="800" text-anchor="middle">HBM</text>
+              <text x="818" y="116" font-size="10" fill="#06302c" font-weight="800" text-anchor="middle">HBM</text>
+            </g>
+            <text x="102" y="358" font-size="11" fill="#9fb3d1" text-anchor="middle">memory stacks</text>
+            <text x="818" y="358" font-size="11" fill="#9fb3d1" text-anchor="middle">memory stacks</text>
+          </g>
+        </svg>
+        <p class="fig-cap">The logic die in the center does the math, but the speed at which it can be <em>fed data</em> from the surrounding HBM stacks is what actually determines training performance. This is why HBM supply (Chapter 6) is as strategic as GPU supply.</p>
+      </div>
+
       <h3>The merchant chip: NVIDIA's GPU</h3>
-      <p>NVIDIA doesn't keep its chips — it sells them to <em>everyone</em>: startups, governments, cloud companies. Its real moat isn't only the silicon; it's <strong>CUDA</strong>, the software developers have used for 15+ years. Millions of AI programs are written for CUDA, and rewriting them for a rival chip is painful — so even when a competitor's hardware is good, customers stay. (Chapter 12 digs into this.)</p>
+      <p><strong>NVIDIA (NVDA)</strong> doesn't keep its chips — it sells them to <em>everyone</em>: startups, governments, cloud companies. Its real moat isn't only the silicon; it's <strong>CUDA</strong>, the software developers have used for 15+ years. Millions of AI programs are written for CUDA, and rewriting them for a rival chip is painful — so even when a competitor's hardware is good, customers stay. (Chapter 12 digs into this.)</p>
 
       <h3>The custom chips: TPU & Trainium</h3>
-      <p>Google (<strong>TPU</strong>) and Amazon (<strong>Trainium</strong>/<strong>Inferentia</strong>) buy huge numbers of NVIDIA GPUs — but they <em>also</em> design their own chips to cut their dependence and their costs. They don't sell these chips; they rent them to <em>you</em> through their clouds. They lean on <strong>Broadcom</strong> (and <strong>Marvell</strong>) for the hard networking pieces and on TSMC to build them. Microsoft (<strong>Maia</strong>) and Meta (<strong>MTIA</strong>) are doing the same.</p>
+      <p><strong>Google (GOOGL)</strong> (<strong>TPU</strong>) and <strong>Amazon (AMZN)</strong> (<strong>Trainium</strong>/<strong>Inferentia</strong>) buy huge numbers of NVIDIA GPUs — but they <em>also</em> design their own chips to cut their dependence and their costs. They don't sell these chips; they rent them to <em>you</em> through their clouds. They lean on <strong>Broadcom (AVGO)</strong> (and <strong>Marvell (MRVL)</strong>) for the hard networking pieces and on TSMC to build them. <strong>Microsoft (MSFT)</strong> (<strong>Maia</strong>) and <strong>Meta (META)</strong> (<strong>MTIA</strong>) are doing the same.</p>
 
       <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>This is the central debate in AI hardware investing: <strong>merchant (NVIDIA) vs. custom (ASIC)</strong>. NVIDIA wins on flexibility, software lock-in, and being available to all. Custom chips win on cost and efficiency <em>for the giant who designed them</em>. The quiet winner either way is <strong>Broadcom</strong>, which helps build most of the custom chips — and, of course, <strong>TSMC</strong>, which builds <em>all</em> of them. When two armies fight, sell ammunition to both.</p></div>
 
@@ -1061,7 +1157,7 @@ footer b{color:#dce7f6}
 
       <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>The startups' challenge is rarely the hardware — it's the <strong>software moat</strong>. Even a faster, cheaper chip struggles if developers have to rewrite everything to use it (the CUDA problem again). So evaluate any "NVIDIA killer" on two axes: <em>is the chip genuinely better for inference, and how painful is it to switch?</em> The realistic bull case for challengers is owning the high-volume, cost-sensitive inference slice — not dethroning NVIDIA in training.</p></div>
 
-      <div class="callout emerging"><span class="lab">🚀 Emerging Disruption</span><p><strong>Inference moving to the edge.</strong> As models shrink, more inference will run directly on phones, laptops, and cars instead of in data centers — pulling in <strong>Apple</strong>, <strong>Qualcomm</strong>, and a wave of low-power "NPU" chips. The center of gravity in AI compute may slowly spread out from giant data centers toward billions of small devices.</p></div>
+      <div class="callout emerging"><span class="lab">🚀 Emerging Disruption</span><p><strong>Inference moving to the edge.</strong> As models shrink, more inference will run directly on phones, laptops, and cars instead of in data centers — pulling in <strong>Apple (AAPL)</strong>, <strong>Qualcomm (QCOM)</strong>, and a wave of low-power "NPU" chips. The center of gravity in AI compute may slowly spread out from giant data centers toward billions of small devices.</p></div>
     </div>
   </section>
 
@@ -1122,14 +1218,14 @@ footer b{color:#dce7f6}
       </div>
 
       <h3>The unsung hero: the retimer</h3>
-      <p>As copper signals travel even a short distance at high speed, they get garbled. A <strong>retimer</strong> is a tiny chip that cleans up and re-sends the signal so it arrives crisp. It sounds mundane, but in a dense AI server there are <em>many</em> of them, and they're getting more essential as speeds climb. <strong>Astera Labs</strong> built a strong business here, with a sticky twist: its monitoring software (COSMOS) gets baked into the motherboard, creating lock-in beyond the chip itself.</p>
+      <p>As copper signals travel even a short distance at high speed, they get garbled. A <strong>retimer</strong> is a tiny chip that cleans up and re-sends the signal so it arrives crisp. It sounds mundane, but in a dense AI server there are <em>many</em> of them, and they're getting more essential as speeds climb. <strong>Astera Labs (ALAB)</strong> built a strong business here, with a sticky twist: its monitoring software (COSMOS) gets baked into the motherboard, creating lock-in beyond the chip itself.</p>
 
       <h3>The networking layer: NVLink, InfiniBand, Ethernet</h3>
       <p>Above the physical wires sits the "language" the chips use to talk:</p>
       <ul>
-        <li><strong>NVLink</strong> (NVIDIA) — ultra-fast links between NVIDIA chips sitting close together. Proprietary, and a big part of NVIDIA's moat.</li>
+        <li><strong>NVLink</strong> (<strong>NVIDIA (NVDA)</strong>) — ultra-fast links between NVIDIA chips sitting close together. Proprietary, and a big part of NVIDIA's moat.</li>
         <li><strong>InfiniBand</strong> (NVIDIA, via its Mellanox acquisition) — connects whole clusters; long favored for training.</li>
-        <li><strong>Ethernet</strong> — the open standard the whole internet uses. A broad alliance (<strong>Broadcom</strong>, <strong>Arista</strong>, others) is pushing "AI Ethernet" as the open challenger to NVIDIA's proprietary networking.</li>
+        <li><strong>Ethernet</strong> — the open standard the whole internet uses. A broad alliance (<strong>Broadcom (AVGO)</strong>, <strong>Arista (ANET)</strong>, others) is pushing "AI Ethernet" as the open challenger to NVIDIA's proprietary networking.</li>
       </ul>
 
       <div class="callout choke"><span class="lab">⛓️ Choke Point</span><p>NVIDIA doesn't just sell chips — it increasingly sells the <em>entire networked system</em> (chips + NVLink + InfiniBand + software). By owning the wiring <em>and</em> the brains, it makes the whole cluster a package only it can fully optimize. The open-Ethernet camp (Broadcom, Arista) is the main force trying to pry that open.</p></div>
@@ -1209,10 +1305,10 @@ footer b{color:#dce7f6}
       <h3>Who builds this</h3>
       <p>The "data-center plumbing and power gear" companies have quietly become AI winners:</p>
       <ul>
-        <li><strong>Vertiv</strong> — cooling and power systems, a marquee liquid-cooling beneficiary.</li>
-        <li><strong>Modine</strong>, <strong>Boyd</strong>, <strong>LiquidStack</strong> — heat exchangers, cold plates, immersion.</li>
-        <li><strong>Eaton</strong>, <strong>Schneider Electric</strong>, <strong>ABB</strong> — power distribution, transformers, switchgear.</li>
-        <li><strong>Super Micro</strong>, <strong>Dell</strong>, <strong>HPE</strong> — the server boxes themselves.</li>
+        <li><strong>Vertiv (VRT)</strong> — cooling and power systems, a marquee liquid-cooling beneficiary.</li>
+        <li><strong>Modine (MOD)</strong>, <strong>nVent (NVT)</strong>, plus private specialists like <strong>Boyd</strong> and <strong>LiquidStack</strong> — heat exchangers, cold plates, immersion.</li>
+        <li><strong>Eaton (ETN)</strong>, <strong>Schneider Electric</strong>, <strong>ABB</strong> — power distribution, transformers, switchgear.</li>
+        <li><strong>Super Micro (SMCI)</strong>, <strong>Dell (DELL)</strong>, <strong>HPE (HPE)</strong> — the server boxes themselves.</li>
       </ul>
 
       <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>This is the most "boring" part of the chain and one of the most leveraged to AI. These firms sell <em>more</em> content per rack every year as cooling and power needs intensify — a rising tide regardless of which chip wins. The moats are real but smaller (patents, engineering, installed-base relationships) than the silicon monopolies, so watch competition and margins. Still: when you can't tell which AI app will win, "sell the cooling and power to all of them" is a clean thesis.</p></div>
@@ -1272,14 +1368,31 @@ footer b{color:#dce7f6}
 
       <h3>The workarounds — and the companies behind them</h3>
       <ul>
-        <li><strong>On-site generation.</strong> Don't wait for the grid — build your own power next to the data center. Natural-gas turbines and engines (e.g. <strong>GE Vernova</strong>, <strong>Caterpillar</strong>) can be deployed relatively fast.</li>
-        <li><strong>Fuel cells.</strong> <strong>Bloom Energy</strong> makes box-like cells that turn natural gas or hydrogen into electricity <em>without burning it</em>, deployable in ~a year — skipping the grid queue entirely.</li>
-        <li><strong>Nuclear (the long game).</strong> Tech giants are signing deals to restart or build reactors. <strong>Small Modular Reactors (SMRs)</strong> from <strong>Oklo</strong> and <strong>NuScale</strong> aim to drop factory-built reactors right next to a campus for steady, carbon-free power.</li>
-        <li><strong>The grid itself.</strong> Utilities and independent power producers like <strong>Vistra</strong>, <strong>Constellation</strong>, and <strong>NRG</strong> suddenly have the scarcest asset of all: existing, connected, reliable generation.</li>
-        <li><strong>The "arms dealers" of power.</strong> <strong>Eaton</strong>, <strong>Schneider</strong>, <strong>GE Vernova</strong>, <strong>Quanta Services</strong> sell the transformers, switchgear, and grid build-out everyone needs.</li>
+        <li><strong>On-site generation.</strong> Don't wait for the grid — build your own power next to the data center. Natural-gas turbines and engines (e.g. <strong>GE Vernova (GEV)</strong>, <strong>Caterpillar (CAT)</strong>) can be deployed relatively fast.</li>
+        <li><strong>Fuel cells.</strong> <strong>Bloom Energy (BE)</strong> makes box-like cells that turn natural gas or hydrogen into electricity <em>without burning it</em>, deployable in ~a year — skipping the grid queue entirely.</li>
+        <li><strong>Nuclear (the long game).</strong> Tech giants are signing deals to restart or build reactors. <strong>Small Modular Reactors (SMRs)</strong> from <strong>Oklo (OKLO)</strong> and <strong>NuScale (SMR)</strong> aim to drop factory-built reactors right next to a campus for steady, carbon-free power.</li>
+        <li><strong>The grid itself.</strong> Utilities and independent power producers like <strong>Vistra (VST)</strong>, <strong>Constellation (CEG)</strong>, and <strong>NRG (NRG)</strong> suddenly have the scarcest asset of all: existing, connected, reliable generation.</li>
+        <li><strong>The "arms dealers" of power.</strong> <strong>Eaton (ETN)</strong>, <strong>Schneider Electric</strong>, GEV, and <strong>Quanta Services (PWR)</strong> sell the transformers, switchgear, and grid build-out everyone needs.</li>
       </ul>
 
       <div class="callout choke"><span class="lab">⛓️ Choke Point</span><p>A site with a <em>pre-approved</em> grid connection — or its own power source — is now worth a fortune, because the connection is the scarce thing, not the land. This has flipped the data-center business: power availability, not real estate price, decides where AI gets built. It's also why electricity-equipment makers and power producers re-rated as "AI stocks."</p></div>
+
+      <h3>Stranded power, flared gas & the bitcoin-miner pivot</h3>
+      <p>If power is the bottleneck, then <em>wasted</em> power is treasure. Two related stories follow from that.</p>
+      <p><strong>Crusoe (private)</strong> built its business on <strong>stranded energy</strong> — power that exists but has nowhere to go. At remote oil wells, natural gas comes up as a byproduct and is often <strong>flared</strong> (burned off uselessly) because there's no pipeline. Crusoe parks modular data centers right at the wellhead, burns that otherwise-wasted gas to generate electricity, and turns it into compute. Same idea at remote solar/wind sites that can't get their power to a city. It's a clever way to get electricity <em>today</em> without joining the multi-year grid queue, and Crusoe has since expanded into building large AI data centers more broadly.</p>
+      <p><strong>The bitcoin-miner pivot.</strong> Bitcoin miners spent a decade doing one thing brilliantly: securing huge blocks of cheap power and energizing buildings full of hot chips. That is <em>exactly</em> the scarce skill set AI now needs. So many miners are converting (or leasing) their sites into AI data centers — names you'll hear include <strong>Core Scientific (CORZ)</strong>, <strong>TeraWulf (WULF)</strong>, <strong>IREN (IREN)</strong>, <strong>Cipher Mining (CIFR)</strong>, <strong>Riot Platforms (RIOT)</strong>, <strong>Hut 8 (HUT)</strong>, and <strong>Applied Digital (APLD)</strong>. Some signed multi-billion-dollar deals to host hyperscalers and AI clouds.</p>
+
+      <div class="callout investor"><span class="lab">📈 The Investor's Lens — telling the legit from the lottery ticket</span>
+        <p>A bitcoin miner's stock jumping on an "AI pivot" press release is not the same as a real business. Five questions separate substance from story:</p>
+        <ol>
+          <li><strong>Real, contracted power?</strong> Do they actually hold a large, energized grid connection (hundreds of MW) with room to grow — or just a plan? Energized megawatts are the asset.</li>
+          <li><strong>A signed, creditworthy tenant.</strong> Is there a long-term lease with a real hyperscaler/AI cloud (investment-grade counterparty), or just a non-binding "letter of intent"? The contract length and customer quality are everything.</li>
+          <li><strong>Can the site actually host AI?</strong> Bitcoin sites are often air-cooled and remote. AI needs <em>liquid cooling</em>, high-grade networking, redundancy, and low-latency fiber. Retrofitting is expensive and slow — does the capex math work?</li>
+          <li><strong>Balance sheet for the build.</strong> AI data centers cost far more per megawatt than mining rigs. Can they finance the conversion without diluting shareholders into oblivion?</li>
+          <li><strong>Mix shift in the numbers.</strong> Is high-margin, recurring AI-hosting revenue actually showing up in results — or is it still 95% volatile mining revenue with an AI logo on the slides?</li>
+        </ol>
+        <p>Rule of thumb: the legitimate ones are really <em>power-and-real-estate</em> companies (selling energized, AI-ready buildings on long leases); the lottery tickets are mining companies hoping a press release re-rates the stock. Judge them on contracted megawatts and tenant quality, not headlines.</p>
+      </div>
 
       <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>Energy is the second-order AI trade. The chip names are crowded; the <em>power</em> names are a way to bet on AI's growth from a different angle — utilities with spare baseload, electrical-equipment makers, gas-turbine builders, and the nuclear optionality plays. Caveats: utilities are regulated and slow, fuel-cell and SMR names can be richly valued on <em>future</em> promise, and demand forecasts swing wildly. Separate "sells real power today" from "promises power in 2030."</p></div>
 
@@ -1343,11 +1456,63 @@ footer b{color:#dce7f6}
         <li><strong>Frameworks</strong> — <strong>PyTorch</strong> (originally Meta, now broadly governed) and <strong>JAX</strong> (Google) are how researchers <em>describe</em> models. PyTorch winning the open framework is a big reason AI moved so fast.</li>
         <li><strong>Serving / inference engines</strong> — tools like <strong>vLLM</strong> and NVIDIA's <strong>TensorRT</strong> squeeze more answers per chip. Pure efficiency, pure money.</li>
         <li><strong>Orchestration</strong> — software (often built on <strong>Kubernetes</strong>) that schedules thousands of chips, restarts failed jobs, and keeps clusters busy. Boring, essential, sticky.</li>
-        <li><strong>The clouds</strong> — where it all runs: hyperscalers (<strong>Microsoft Azure</strong>, <strong>AWS</strong>, <strong>Google Cloud</strong>) and "neoclouds" built only for AI (<strong>CoreWeave</strong>, <strong>Nebius</strong>, <strong>Crusoe</strong>).</li>
-        <li><strong>The models</strong> — <strong>OpenAI</strong>, <strong>Anthropic</strong>, <strong>Google DeepMind</strong>, <strong>Meta</strong>, <strong>Mistral</strong>, <strong>xAI</strong> — the brains that everything above is built to deliver.</li>
+        <li><strong>The clouds</strong> — where it all runs: hyperscalers (<strong>Microsoft (MSFT)</strong> Azure, <strong>Amazon (AMZN)</strong> AWS, <strong>Google (GOOGL)</strong> Cloud, <strong>Oracle (ORCL)</strong>) and "neoclouds" built only for AI (next section).</li>
+        <li><strong>The models</strong> — <strong>OpenAI</strong>, <strong>Anthropic</strong>, <strong>Google DeepMind</strong>, <strong>Meta (META)</strong>, <strong>Mistral</strong>, <strong>xAI</strong> — the brains that everything above is built to deliver.</li>
       </ul>
 
-      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>The deepest question in AI investing: <strong>does value flow to the hardware or the software, and how durable is each moat?</strong> NVIDIA proves software can protect hardware (CUDA). But layers higher up — the models — face fierce competition and may behave more like a commodity than people expect, with the durable profits sitting in distribution (the clouds and apps) and in the picks-and-shovels below. When you analyze any AI company, locate it on this cake and ask what stops the layer above or below from capturing its margin.</p></div>
+      <h3>Neoclouds: the specialist tier</h3>
+      <p>A new kind of cloud has appeared that does <em>one</em> thing: rent out AI compute. These "neoclouds" differ from the hyperscalers in three structural ways:</p>
+      <ul>
+        <li><strong>Pure-play.</strong> They don't sell databases, storage, or general computing — just GPU hours, sometimes with a thin software layer on top.</li>
+        <li><strong>Higher utilization.</strong> Without the overhead of a full cloud, they keep GPUs busier, which means lower prices for customers.</li>
+        <li><strong>Tighter NVIDIA relationships.</strong> Most buy almost exclusively from NVIDIA and often get preferential chip allocation in exchange for big early purchase commitments.</li>
+      </ul>
+
+      <div class="tablewrap">
+      <table>
+        <thead><tr><th>Company</th><th>Status</th><th>Specialty</th><th>Position</th></tr></thead>
+        <tbody>
+          <tr><td class="co-name">CoreWeave</td><td><span class="tk">CRWV</span></td><td>Largest dedicated GPU cloud; long-term contracts with Microsoft, OpenAI, others</td><td>Public; scaling fast on an asset-heavy, debt-financed model</td></tr>
+          <tr><td class="co-name">Nebius</td><td><span class="tk">NBIS</span></td><td>European-origin GPU cloud (formerly part of Yandex); expanding in EU &amp; North America</td><td>Public; growing footprint</td></tr>
+          <tr><td class="co-name">Crusoe</td><td><span class="tk priv">Private</span></td><td>Builds at stranded-energy sites (flared gas, remote renewables); now large AI data centers too</td><td>Differentiated power story (see Chapter 11)</td></tr>
+          <tr><td class="co-name">Lambda</td><td><span class="tk priv">Private</span></td><td>Developer-friendly GPU cloud popular with smaller AI startups</td><td>Mid-size and growing</td></tr>
+          <tr><td class="co-name">Together AI</td><td><span class="tk priv">Private</span></td><td>GPU cloud + model-serving + open-source model platform</td><td>A step above pure rental, with thin platform value-add</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>Neoclouds are a leveraged bet on AI demand <em>and</em> on NVIDIA. The bull case: they grow explosively and lock in long contracts with great customers. The risks are real and specific: heavy <strong>debt</strong> to buy chips, <strong>customer concentration</strong> (a few labs are most of revenue), and the danger that the GPUs they bought <strong>depreciate</strong> faster than the contracts pay them back. Judge a neocloud on contract length, customer credit quality, and financing terms — not headline growth.</p></div>
+
+      <h3>The LLMs: tokenization, partnerships & the economics</h3>
+      <p>At the very top of the stack sit the <strong>Large Language Models (LLMs)</strong> — the "brains" like ChatGPT, Claude, and Gemini. They're the reason the entire chain below them is being built. Here's how they actually work and make money, in plain English.</p>
+
+      <h4>What is a "token"? (the unit AI is sold in)</h4>
+      <p>An LLM doesn't read words — it reads <strong>tokens</strong>, which are word-fragments. "Tokenization" is just chopping text into these pieces (roughly ¾ of a word each, so ~750 words ≈ 1,000 tokens). The model's whole job is to predict the next token, over and over, to produce an answer. <strong>Tokens are also the unit of money:</strong> AI companies charge per million tokens in (your prompt) and per million tokens out (the answer). Everything about AI economics — cost, price, profit — is measured in tokens.</p>
+
+      <div class="analogy"><div class="ic">🚕</div><div><strong>Analogy:</strong> Think of an LLM like a taxi that bills by the word. Tokens are the meter. "Training" is the cost of building the car and teaching the driver (huge, one-time); each ride you take ("inference") burns fuel (electricity + chip time) and is billed by the token.</div></div>
+
+      <h4>How LLM economics work</h4>
+      <ul>
+        <li><strong>Training cost</strong> — a giant one-time bill (chips, power, data, salaries) to create the model. Can run into the hundreds of millions or more for a frontier model.</li>
+        <li><strong>Inference cost</strong> — what it costs to answer each query: chip time + electricity, measured per token. This is a <em>forever</em> cost and, at scale, dwarfs training.</li>
+        <li><strong>Revenue</strong> — subscriptions (e.g. $20/month chatbots), per-token <strong>API</strong> fees to developers, and enterprise deals.</li>
+        <li><strong>The squeeze</strong> — token <em>prices</em> have been falling fast (competition + efficiency), while the cost to train the <em>next</em>, smarter model keeps rising. So the core question for any model company is: can it earn back rising training bills before falling prices erode the margin?</li>
+      </ul>
+
+      <h4>Who partners with whom (and why)</h4>
+      <p>Models need oceans of compute, so each leading lab is tied to a cloud/chip backer:</p>
+      <ul>
+        <li><strong>OpenAI</strong> — historically anchored to <strong>Microsoft (MSFT)</strong> Azure, and increasingly multi-cloud (Oracle, CoreWeave, and its own data-center efforts).</li>
+        <li><strong>Anthropic</strong> — backed by <strong>Amazon (AMZN)</strong> and <strong>Google (GOOGL)</strong>; uses AWS Trainium and Google TPUs as well as NVIDIA.</li>
+        <li><strong>Google DeepMind</strong> — runs on Google's own <strong>TPUs</strong> (the most vertically integrated of all).</li>
+        <li><strong>Meta (META)</strong> — trains open-weight Llama models on massive in-house NVIDIA fleets and its own MTIA chips.</li>
+        <li><strong>xAI</strong> — built huge NVIDIA GPU clusters at speed.</li>
+      </ul>
+
+      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span>
+        <p>Notice the <strong>circular flow of money</strong>: hyperscalers invest in model labs → labs spend that money renting the hyperscalers' compute → hyperscalers buy chips from NVIDIA → NVIDIA's revenue soars. It's real demand, but it means a lot of AI revenue currently circulates among a handful of giants. Watch for that loop to be validated by <em>outside</em> revenue (real customers paying for AI), not just partners funding each other.</p>
+        <p>The deeper question: <strong>does value flow to the hardware or the software, and how durable is each moat?</strong> NVIDIA proves software can protect hardware (CUDA). But the model layer faces fierce competition and may behave more like a commodity than people expect — with durable profits sitting in <em>distribution</em> (the clouds and apps with real users) and in the picks-and-shovels below. When you analyze any AI company, locate it on this cake and ask what stops the layer above or below from capturing its margin.</p>
+      </div>
 
       <div class="callout emerging"><span class="lab">🚀 Emerging Disruption</span><p><strong>Cracking the CUDA moat.</strong> Open compilers and "write once, run anywhere" projects (e.g. <strong>Triton</strong>, <strong>OpenAI</strong>'s and others' efforts) aim to let code run on <em>any</em> chip, not just NVIDIA's. If they succeed, the hardware playing field levels and competition shifts back to raw price-performance — the single biggest swing factor for the whole industry's profit map.</p></div>
     </div>
@@ -1369,7 +1534,7 @@ footer b{color:#dce7f6}
     <div class="wrap">
       <div class="chapnum">Chapter 13</div>
       <h2 class="chap">The Frontier: the wild bets that could rewrite the chain</h2>
-      <p class="lede">Every chapter so far had its own "emerging disruption." This chapter gathers the biggest, most speculative leaps — the moonshots that, if they work, could reorder the entire supply chain. Treat these as optionality: low odds individually, but enormous payoffs, and exactly where the Leopold-Aschenbrenner style of "where does the frontier go?" thinking earns its keep.</p>
+      <p class="lede">Every chapter so far had its own "emerging disruption." This chapter gathers the biggest, most speculative leaps — the moonshots that, if they work, could reorder the entire supply chain. Treat these as optionality: low odds individually, but enormous payoffs, and exactly where "where does the frontier go next?" thinking earns its keep.</p>
 
       <div class="grid g2" style="margin-top:24px">
         <div class="fig light" style="margin:0">
@@ -1394,7 +1559,7 @@ footer b{color:#dce7f6}
           <p class="fig-title">Frontier 4</p>
           <h4 style="margin-top:2px">⚛️ Quantum (the long shot)</h4>
           <p style="font-size:14.5px;color:#43576f">A fundamentally different kind of computer that could crack specific problems classical chips can't. <strong>Not</strong> a near-term AI-training replacement — more a parallel track.</p>
-          <p style="font-size:13.5px;color:#5b6b82"><strong>The catch:</strong> still early, error-prone, and narrow. <br><strong>Players:</strong> <strong>IBM</strong>, <strong>Google</strong>, <strong>IonQ</strong>, <strong>Rigetti</strong>, <strong>PsiQuantum</strong>.</p>
+          <p style="font-size:13.5px;color:#5b6b82"><strong>The catch:</strong> still early, error-prone, and narrow. <br><strong>Players:</strong> <strong>IBM (IBM)</strong>, <strong>Google (GOOGL)</strong>, <strong>IonQ (IONQ)</strong>, <strong>Rigetti (RGTI)</strong>, <strong>PsiQuantum</strong> (private).</p>
         </div>
       </div>
 
@@ -1547,6 +1712,85 @@ footer b{color:#dce7f6}
       </table>
       </div>
       <p style="font-size:12.5px;color:var(--muted)">Tickers are illustrative identifiers, not recommendations. Some firms are private or trade on non-US exchanges (e.g. TSMC also lists in Taiwan; Samsung in Korea; SK Hynix in Korea). Always verify before acting.</p>
+
+      <h3>Cross-layer dynamics: how the bottlenecks talk to each other</h3>
+      <p>The single most important habit to develop is to <strong>stop thinking of each layer as independent</strong>. They are not. A constraint in one layer reshapes pricing, capital spending, and competitive position several layers away. When the bottleneck moves, the money moves with it.</p>
+
+      <div class="analogy"><div class="ic">🚿</div><div><strong>Picture the stack from Figure 1.1 as a water pipe</strong> with sections of different width. Flow is set by the narrowest section. Widen it and flow doesn't rise smoothly — it surges until it hits the <em>next</em> narrowest section, which becomes the new bottleneck. Pricing power, returns, and investor attention all migrate to wherever the pipe is currently narrowest.</div></div>
+
+      <p>The history of AI infrastructure since 2022 is a clean illustration:</p>
+      <ul>
+        <li><strong>2022–2023 — the wafer bottleneck.</strong> TSMC's leading-edge wafer output was the binding constraint; NVIDIA couldn't get enough. Pricing power and returns concentrated in <strong>TSMC (TSM)</strong> and <strong>NVIDIA (NVDA)</strong>.</li>
+        <li><strong>2024 — the packaging bottleneck.</strong> Wafers loosened, but CoWoS advanced-packaging capacity didn't keep up. TSMC's CoWoS plans became the most-watched line in the industry; packaging-adjacent names (<strong>Besi</strong>, the OSATs) re-rated.</li>
+        <li><strong>2024–2025 — the HBM bottleneck.</strong> Packaging expanded, but HBM memory couldn't keep pace; <strong>SK Hynix</strong> sold out 12–18 months ahead. The constraint rotated to memory, and HBM makers' equity reflected it.</li>
+        <li><strong>2025 onward — the power bottleneck.</strong> HBM expanded; the binding constraint left the silicon stack entirely and moved into the grid. <strong>Constellation (CEG)</strong>, <strong>Vistra (VST)</strong>, <strong>GE Vernova (GEV)</strong>, <strong>Eaton (ETN)</strong>, and <strong>Bloom Energy (BE)</strong> became the new beneficiaries.</li>
+      </ul>
+      <p>None of this was random — each constraint was foreseeable from the capacity curves of the previous one. <strong>The investor's job is to be one bottleneck ahead.</strong></p>
+
+      <h4>Worked example: what if memory <em>stops</em> being a bottleneck?</h4>
+      <p>Suppose the next HBM generation ramps faster than expected, supply catches up, and HBM prices soften. Tracing the ripples shows how cross-layer thinking works:</p>
+      <div class="tablewrap">
+      <table>
+        <thead><tr><th>Affected player</th><th>Direction</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td class="co-name">HBM makers (SK Hynix, Micron, Samsung)</td><td><span class="tag-pill pill-mono">Margins ↓</span> volume ↑</td><td>The supply-constrained premium fades; margins normalize toward a typical memory cycle, but every AI chip still needs HBM so volume grows.</td></tr>
+          <tr><td class="co-name">NVIDIA &amp; AMD</td><td><span class="tag-pill pill-strong">Positive</span></td><td>HBM is a big chunk of an accelerator's bill-of-materials. Cheaper HBM = better gross margins or more aggressive pricing against rivals. Either is good.</td></tr>
+          <tr><td class="co-name">Astera Labs (ALAB)</td><td><span class="tag-pill pill-strong">Positive</span></td><td>Cheap, abundant memory encourages memory-rich system designs — and Astera's parts sit between compute and memory, so more memory = more of their chips per system.</td></tr>
+          <tr><td class="co-name">HBM equipment makers (Besi, TSV tools)</td><td><span class="tag-pill pill-mono">Negative</span></td><td>From "sold out" to "balanced" means makers slow capacity expansion; equipment orders peak and roll over even as installed base keeps producing.</td></tr>
+          <tr><td class="co-name">Inference specialists that avoid HBM (Groq)</td><td><span class="tag-pill pill-mono">Negative</span></td><td>Part of the pitch was dodging the HBM shortage. If HBM is cheap and plentiful, that advantage shrinks.</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p>The reverse case simply flips every row: if memory <em>tightens</em>, HBM-maker margins expand, NVIDIA/AMD bill-of-materials creeps up, and Groq's HBM-free shortcut looks more attractive again.</p>
+
+      <h4>Three cross-layer relationships worth memorizing</h4>
+      <ol>
+        <li><strong>Power ↔ chip pricing.</strong> When <em>power</em> (not chips) is the hard ceiling, the price of any one chip matters less than its <strong>performance-per-watt</strong> — buyers will pay almost anything for the chip that delivers the most tokens per watt. This structurally supports NVIDIA's pricing power as long as it leads on that metric, and it's the deepest reason hyperscalers tolerate NVIDIA's margins. <em>Watch performance-per-watt as closely as raw performance.</em></li>
+        <li><strong>Cooling intensity ↔ rack economics.</strong> When cooling is the bottleneck, customers pay up for high-density liquid-cooled racks, pulling value into <strong>Vertiv (VRT)</strong>, Schneider, nVent, and Modine. But if a future chip generation delivers far more compute per watt, the cooling capex per dollar of GPU spend falls — cooling vendors still grow, just slower. <em>Their structural risk is power density staying extreme.</em></li>
+        <li><strong>Software lock-in ↔ ASIC volume.</strong> CUDA's strength is exactly what keeps hyperscaler ASICs (TPU, Trainium, Maia) volume-limited rather than capability-limited. If CUDA's grip weakens (ROCm maturing, open Ethernet, hardware-agnostic PyTorch), ASIC volumes rise faster — pulling value toward <strong>Broadcom (AVGO)</strong>, <strong>Marvell (MRVL)</strong>, and Astera, and away from NVIDIA's pricing power. <em>This is the single largest cross-layer wager any AI investor implicitly makes.</em></li>
+      </ol>
+
+      <h3>The TSMC "Goldilocks" problem</h3>
+      <p>One framing — articulated well by the investor <strong>Gavin Baker</strong> — ties the whole stack together through a single company's discipline: <strong>TSMC is acting as a "governor" on the AI boom by deliberately refusing to expand capacity as fast as customers like NVIDIA want.</strong></p>
+      <p>Management remembers past memory and foundry cycles where capacity raced ahead of demand and crashed pricing for years. So they ramp deliberately — sometimes painfully so. The striking implication: if TSMC <em>doubled</em> capacity, NVIDIA could likely sell vastly more chips next year. But TSMC won't double. And <em>because</em> it won't, the AI build-out stretches across more years instead of climaxing in one over-supplied crash.</p>
+
+      <h4>Why this is structural, not a quirk</h4>
+      <p>It's the rational behavior of an oligopolist with very long-lived, expensive assets. A leading-edge fab takes 3–5 years and $20–30 billion. Over-build and demand normalizes → you sit on depreciating capacity earning commodity returns for a decade. Under-build → you keep premium pricing and customers absorb the discomfort. The asymmetry strongly favors caution. The same instinct makes ASML expand deliberately and power producers refuse to sign every contract on the table. <strong>Capital-disciplined oligopolists at the choke points are why this cycle has lasted longer without breaking than a naïve "build-out" model predicts.</strong></p>
+
+      <div class="qgrid">
+        <div class="qcard"><div class="qn">Too Slow</div><h5>Demand frustrated</h5><p>If capex stays well below need for years, AI gets bottlenecked, hyperscalers lose patience and accelerate their own chips. Pricing stays firm but volume growth slows. Picks-and-shovels revenue decelerates even with healthy margins.</p></div>
+        <div class="qcard" style="border-top-color:var(--green)"><div class="qn" style="color:var(--green)">Just Right</div><h5>The likely zone</h5><p>TSMC adds capacity each year fast enough to keep utilization high (mid-90s%) and let customers grow — but never fully satisfies them. NVIDIA stays supply-constrained, margins across the stack stay high, and the build-out extends multi-year instead of crashing.</p></div>
+        <div class="qcard" style="border-top-color:var(--red)"><div class="qn" style="color:var(--red)">Too Fast</div><h5>The bubble trigger</h5><p>If TSMC accelerates hard — political pressure to onshore, or to grab share — wafer and CoWoS supply could catch up within 12–18 months. Pricing softens, NVIDIA margins compress, growth slows just as new capacity hits depreciation. The classic semiconductor cycle ending.</p></div>
+        <div class="qcard"><div class="qn">Outside Triggers</div><h5>Demand shocks</h5><p>The other failure mode is demand-side: AI workloads smaller than expected, a model-capability plateau, or a recession cutting hyperscaler capex. In any of these, even a disciplined ramp looks "too fast" because demand fell out from under it.</p></div>
+      </div>
+
+      <h4>What to actually watch (all publicly reported)</h4>
+      <div class="tablewrap">
+      <table>
+        <thead><tr><th>Metric</th><th>What it tells you</th></tr></thead>
+        <tbody>
+          <tr><td class="co-name">TSMC annual capex guidance</td><td>The single most important number. A sharp jump (&gt;~25% YoY) on an already-high base = "too fast" risk; flat/down while demand is strong = "just right."</td></tr>
+          <tr><td class="co-name">CoWoS capacity targets</td><td>Watch the ratio of <em>planned</em> packaging additions to <em>committed</em> hyperscaler orders. Planned racing ahead of orders = supply may catch up sooner than expected.</td></tr>
+          <tr><td class="co-name">TSMC utilization</td><td>Leading-edge utilization above ~90% = tight. A drop into the 80s while capex still ramps is an early warning supply is catching up.</td></tr>
+          <tr><td class="co-name">NVIDIA gross margin</td><td>The clearest single tell. High-70s% = tight allocation, strong pricing. A <em>sustained</em> decline (not a one-quarter mix dip) signals the cycle turning.</td></tr>
+          <tr><td class="co-name">HBM book-to-bill</td><td>The parallel constraint to packaging. Below 1.0 while TSMC still ramps = the system is over-supplying.</td></tr>
+          <tr><td class="co-name">Hyperscaler capex guidance</td><td>The demand side. The big buyers raising capex while TSMC holds discipline = bullish; trimming while TSMC ramps = even disciplined capex looks too fast.</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>Two related ideas worth filing alongside this: <strong>(1) power may ease later this decade</strong> as new generation (gas, nuclear restarts, solar+storage) comes online — which would rotate the bottleneck back into the silicon stack. <strong>(2) Custom ASICs like Amazon's Trainium are a dark horse;</strong> if their volumes grow materially, the immediate beneficiaries are Broadcom, Marvell, Astera, and TSMC — <em>not</em> NVIDIA. The throughline of this whole book is exactly the TSMC point: regardless of who wins between NVIDIA and the ASIC challengers, and regardless of whether HBM is tight or loose in a given quarter, the disciplined oligopolists at the choke points get paid in every scenario except total demand collapse.</p></div>
+
+      <h3>Four scenarios worth stress-testing</h3>
+      <p>Not predictions — scenarios for pressure-testing any position you hold.</p>
+      <div class="qgrid">
+        <div class="qcard" style="border-top-color:var(--red)"><div class="qn" style="color:var(--red)">Scenario A</div><h5>The Taiwan Shock</h5><p>A blockade, conflict, or accident disrupts TSMC. Within months, leading-edge supply collapses globally; every layer above silicon is constrained. Taiwan-exposed names hit hardest; US-manufacturing names (Intel Foundry, Micron) gain temporary share but can't replace lost capacity for years.</p></div>
+        <div class="qcard" style="border-top-color:var(--orange)"><div class="qn" style="color:var(--orange)">Scenario B</div><h5>The Power Wall</h5><p>Grid interconnection delays drag on. The build-out slows even as chip supply normalizes. Behind-the-meter generation (Bloom, gas turbines, eventually SMRs) becomes strategic. Players holding existing power positions gain a structural edge.</p></div>
+        <div class="qcard" style="border-top-color:var(--purple)"><div class="qn" style="color:var(--purple)">Scenario C</div><h5>The Software Switch</h5><p>ROCm maturity + open Ethernet + hyperscaler frameworks erode CUDA's grip. NVIDIA's hardware stays excellent but margins compress as customers gain real second-source leverage. ASIC and AMD share grows; picks-and-shovels (Broadcom, Astera, packaging, HBM) are unaffected.</p></div>
+        <div class="qcard" style="border-top-color:var(--green)"><div class="qn" style="color:var(--green)">Scenario D</div><h5>Continuation (most likely)</h5><p>Constraints get worked through one at a time. Bottlenecks rotate chips → packaging → HBM → power and back. The industry keeps growing because demand is real and players are well-capitalized. Tickers rise and fall on execution; the structural moats largely hold.</p></div>
+      </div>
+
+      <div class="callout note"><span class="lab">🌍 The big picture</span><p>An investor in AI infrastructure is — whether they realize it or not — taking views on the geography of Taiwan, the queue times at the power grid, the chemistry of Japanese photoresist suppliers, and the engineering pace of one Dutch company. <strong>The map of this industry is the map of the world.</strong></p></div>
 
       <h3>The whole book in one framework</h3>
       <p>If you remember nothing else, remember how to <em>read</em> any new AI company you encounter. Drop it into this four-question grid:</p>
