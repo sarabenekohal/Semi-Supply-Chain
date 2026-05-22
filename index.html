@@ -2011,6 +2011,73 @@ footer b{color:#dce7f6}
         <p>The deeper question: <strong>does value flow to the hardware or the software, and how durable is each moat?</strong> NVIDIA proves software can protect hardware (CUDA). But the model layer faces fierce competition and may behave more like a commodity than people expect — with durable profits sitting in <em>distribution</em> (the clouds and apps with real users) and in the picks-and-shovels below. When you analyze any AI company, locate it on this cake and ask what stops the layer above or below from capturing its margin.</p>
       </div>
 
+      <h3>The future of LLMs: three questions that decide who wins</h3>
+      <p>The hardest, most valuable debates about where this all goes were framed especially clearly by investor <strong>Gavin Baker</strong>. Three forward-looking questions matter most for an investor — and the answers reshuffle who captures the profit. These are genuinely open; what follows are the live debates, not settled facts.</p>
+
+      <h4>1. Harness engineering — the model is the engine, not the car</h4>
+      <p>A raw LLM, by itself, just predicts the next word. To turn it into something useful — an "agent" that books travel, writes and runs code, or researches a company — you wrap it in software called the <strong>harness</strong> (or "scaffolding"): the tools it can call (web search, a code sandbox, a database), the memory it can read and write, the way its context is managed, and the loops that let it check and retry its own work.</p>
+
+      <div class="analogy"><div class="ic">🏎️</div><div><strong>Analogy:</strong> The model is the <strong>engine</strong>; the harness is the rest of the <strong>car</strong> — the steering, dashboard, fuel system, and safety checks. A modest engine in a well-built car beats a monster engine bolted to a skateboard. Increasingly, big jumps in what AI can actually <em>do</em> come from a better harness, not a bigger model.</div></div>
+
+      <div class="fig">
+        <p class="fig-title">Figure 12.3</p>
+        <p class="fig-sub">Anatomy of an AI agent — the model vs. the harness around it</p>
+        <svg viewBox="0 0 920 290" role="img" aria-label="An AI agent: a model core surrounded by the harness of tools, memory, orchestration, and verification">
+          <g font-family="inherit" text-anchor="middle">
+            <rect x="30" y="24" width="860" height="242" rx="14" fill="#0e2038" stroke="#39bdf8"/>
+            <text x="170" y="48" font-size="12" font-weight="800" fill="#39bdf8">THE AGENT (what the user actually uses)</text>
+            <!-- model core -->
+            <rect x="360" y="110" width="200" height="80" rx="12" fill="#d6a52a"/>
+            <text x="460" y="142" font-size="15" font-weight="800" fill="#0d1b2e">THE MODEL</text>
+            <text x="460" y="162" font-size="11" fill="#3a2c12">raw next-token engine</text>
+            <!-- harness satellites -->
+            <g>
+              <rect x="70" y="90" width="170" height="50" rx="9" fill="#16263f" stroke="#22b06b"/>
+              <text x="155" y="111" font-size="12.5" font-weight="800" fill="#fff">Tools</text>
+              <text x="155" y="128" font-size="10" fill="#cfe0f5">search · code · APIs</text>
+              <rect x="70" y="158" width="170" height="50" rx="9" fill="#16263f" stroke="#22b06b"/>
+              <text x="155" y="179" font-size="12.5" font-weight="800" fill="#fff">Memory</text>
+              <text x="155" y="196" font-size="10" fill="#cfe0f5">retrieval · saved state</text>
+              <rect x="680" y="90" width="170" height="50" rx="9" fill="#16263f" stroke="#22b06b"/>
+              <text x="765" y="111" font-size="12.5" font-weight="800" fill="#fff">Orchestration</text>
+              <text x="765" y="128" font-size="10" fill="#cfe0f5">multi-step planning</text>
+              <rect x="680" y="158" width="170" height="50" rx="9" fill="#16263f" stroke="#22b06b"/>
+              <text x="765" y="179" font-size="12.5" font-weight="800" fill="#fff">Verification</text>
+              <text x="765" y="196" font-size="10" fill="#cfe0f5">check &amp; retry its work</text>
+            </g>
+            <text x="460" y="232" font-size="12" font-weight="800" fill="#fff">Context management — what the model sees on each step</text>
+            <rect x="300" y="240" width="320" height="16" rx="8" fill="#16263f" stroke="#8a63e8"/>
+            <!-- connectors -->
+            <g stroke="#aebfd8" stroke-width="2" opacity=".7" fill="none">
+              <path d="M240 115 H358"/><path d="M240 183 H358"/><path d="M680 115 H562"/><path d="M680 183 H562"/>
+            </g>
+          </g>
+        </svg>
+        <p class="fig-cap"><strong>The harness is the green ring;</strong> the gold core is the model. As models plateau in raw ability, more capability — and more of the <em>product moat</em> — is created in the harness and the proprietary data/tools it plugs into.</p>
+      </div>
+
+      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>Two consequences. (1) <strong>Moats may migrate to the harness.</strong> If the raw model commoditizes, durable value sits with whoever owns the workflow, the proprietary data, and the integrations — not necessarily the lab with the biggest model. (2) <strong>Harnesses are token-hungry.</strong> Agentic workflows make dozens or hundreds of model calls per task (planning, tool use, self-checking), multiplying inference demand — straightforwardly bullish for the inference picks-and-shovels (chips, memory, power).</p></div>
+
+      <h4>2. Continual learning &amp; memory — the missing piece</h4>
+      <p>Today's LLMs are <strong>frozen</strong> after training. They don't truly learn from talking to you; their "context window" is a short-term scratchpad that resets every session. A model can be brilliant on Monday and remember nothing of your project by Tuesday. <strong>Continual learning</strong> would let a model keep learning <em>on the job</em> — accumulating skills and knowledge over months without an expensive full retrain and without "catastrophically forgetting" what it already knew. Paired with persistent <strong>memory</strong>, the model would compound experience the way a human employee does.</p>
+
+      <div class="callout note"><span class="lab">🔑 Why this is the breakthrough — and when</span>
+        <p>This is plausibly the single biggest remaining unlock. It's what turns AI from a brilliant <em>amnesiac contractor</em> (start from scratch every time) into a true <strong>drop-in remote worker</strong> that learns your company and gets better every week. The economic value of that is enormous — you'd deploy AI like headcount that improves, not like a fixed tool.</p>
+        <p><strong>When?</strong> Genuinely uncertain — this is a research frontier, not an engineering checklist. What exists <em>today</em> are partial workarounds: longer context windows, retrieval (RAG), explicit "memory" features, and fine-tuning. True continual learning (safe, cheap, no forgetting) is the prize, and optimists — Baker among those who flag it as the key question — see meaningful progress over the next few years. Treat any specific date with heavy skepticism; the direction is clearer than the timing.</p>
+      </div>
+
+      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>If continual learning arrives, it does two things at once: it <strong>explodes demand</strong> (every deployed agent now also does ongoing learning = more training-like compute, forever) and it <strong>deepens moats</strong> (a model that has learned <em>your</em> data and workflows is painful to swap out — switching costs jump). It's bullish for compute either way, and it's the strongest case for durable value accruing to whoever owns the deployment + data, not just the base model.</p></div>
+
+      <h4>3. The "bitter lesson" and the frontier-token premium</h4>
+      <p>The famous <strong>"Bitter Lesson"</strong> (from AI researcher Rich Sutton) is this: over and over, <em>general methods that scale with raw compute</em> beat clever, hand-engineered, human-knowledge approaches. Throwing more compute and data at general algorithms keeps winning. Today, this shows up as a price reality: <strong>"frontier tokens"</strong> — the output of the most advanced models — command a <em>premium</em>, because the best models are scarce and clearly ahead, so customers pay up for them.</p>
+      <p>Baker's pointed question for the future: <strong>will frontier tokens still command that premium?</strong> Two ways it could break:</p>
+      <ul>
+        <li><strong>Premium persists.</strong> If the bitter lesson keeps holding, scaling never stops producing a clearly-best model, the frontier stays scarce, and labs (plus their compute suppliers) keep capturing fat rents.</li>
+        <li><strong>Premium erodes (the "bitter-lesson violation").</strong> If a clever <em>harness</em> lets a cheap, smaller (or open-weight) model match a frontier model on most real tasks, then human-engineered scaffolding has substituted for raw scale — a kind of violation of the bitter lesson. Combine that with "good-enough" open models (DeepSeek, Llama) and intelligence commoditizes into a near-cost <em>utility</em>; the frontier premium collapses.</li>
+      </ul>
+
+      <div class="callout investor"><span class="lab">📈 The Investor's Lens — the question under everything</span><p>This is arguably <em>the</em> question for the whole AI economy. <strong>If the frontier premium holds</strong>, value pools in the model labs and the compute they consume — and the picks-and-shovels stay sold out. <strong>If it erodes</strong>, the model layer becomes a commodity utility, and durable profit slides to (a) <em>distribution</em> — the apps, clouds, and harnesses with real users and proprietary data — and (b) the <em>physical</em> picks-and-shovels that get paid no matter whose tokens win. Notice the through-line of this entire book: in <em>both</em> outcomes, the choke points (TSMC, ASML, memory, power) get paid. The frontier-token premium decides who wins <em>above</em> the silicon; it barely changes who wins <em>at</em> it.</p></div>
+
       <div class="callout emerging"><span class="lab">🚀 Emerging Disruption</span><p><strong>Cracking the CUDA moat.</strong> Open compilers and "write once, run anywhere" projects (e.g. <strong>Triton</strong>, <strong>OpenAI</strong>'s and others' efforts) aim to let code run on <em>any</em> chip, not just NVIDIA's. If they succeed, the hardware playing field levels and competition shifts back to raw price-performance — the single biggest swing factor for the whole industry's profit map.</p></div>
 
       <div class="checklist"><span class="lab">✅ Questions to ask before investing in this layer</span>
@@ -2543,6 +2610,12 @@ footer b{color:#dce7f6}
         <dt>Book-to-bill</dt><dd>New orders ÷ shipments; above 1.0 = demand outrunning supply.</dd>
         <dt>Capex</dt><dd>Capital expenditure — the money companies spend building capacity; the demand signal to watch.</dd>
         <dt>Picks and shovels</dt><dd>The suppliers everyone must buy from regardless of which AI app wins.</dd>
+        <dt>Harness / scaffolding</dt><dd>The software wrapped around a model (tools, memory, orchestration, checks) that turns it into a useful agent — the "car" around the "engine."</dd>
+        <dt>Agent</dt><dd>An LLM plus a harness that can take multi-step actions (use tools, browse, run code) toward a goal.</dd>
+        <dt>Continual learning</dt><dd>Letting a model keep learning "on the job" over time without a full retrain or forgetting what it knew — a key unsolved breakthrough.</dd>
+        <dt>Context window</dt><dd>A model's short-term "scratchpad" memory for the current task; it resets between sessions.</dd>
+        <dt>Bitter Lesson</dt><dd>The recurring AI finding that general methods which scale with compute beat hand-engineered, human-knowledge tricks.</dd>
+        <dt>Frontier tokens</dt><dd>Output from the most advanced models, which today command a price premium because the best models are scarce.</dd>
       </dl>
     </div>
   </section>
