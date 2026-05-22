@@ -1640,6 +1640,62 @@ footer b{color:#dce7f6}
       </ul>
       <p><strong>Cerebras</strong> is the example of "different and hard": <em>wafer-scale</em> computing (one dinner-plate-sized chip) is brutally difficult and lets it do things others can't — though it inherits its own trade-off (limited "shoreline" I/O around the chip's edges, which it's attacking with optical and stacked-memory tricks). <strong>Groq</strong>'s LPU (memory on-chip for steady, fast decode) is another "different" bet. It took Cerebras three chip generations to get it right — a reminder that this game rewards grit, and punishes me-too designs.</p>
 
+      <h4>Inside Cerebras: wafer-scale and the "shoreline" problem</h4>
+      <p>Everyone else dices a wafer into ~50–100 small chips. Cerebras keeps the <em>whole wafer</em> as a single chip — hundreds of thousands of cores and a vast amount of ultra-fast on-chip memory, all linked by an on-wafer fabric. The payoff: no slow chip-to-chip wiring, so data moves fast and uniformly across the whole thing. That's the "different and hard" bet.</p>
+      <p>But it creates one nasty bottleneck. You can only get data on and off a chip around its <strong>edges</strong> — the "shoreline." A wafer's <em>area</em> (all that compute and memory) is enormous, but its <em>perimeter</em> barely grows with it. So Cerebras has a huge amount of compute and memory inside, throttled by a thin strip of edge I/O — it's "shoreline-bound." Getting data in/out, and adding more memory capacity, is the hard part. Two fixes attack this:</p>
+
+      <div class="fig">
+        <p class="fig-title">Figure 8.3</p>
+        <p class="fig-sub">The shoreline bottleneck — and Cerebras's two fixes</p>
+        <svg viewBox="0 0 920 240" role="img" aria-label="Cerebras wafer-scale shoreline I/O problem and the optical-wafer and hybrid-bonded-DRAM fixes">
+          <g font-family="inherit" text-anchor="middle">
+            <!-- problem -->
+            <g>
+              <text x="150" y="34" font-size="13" font-weight="800" fill="#e2563f">THE PROBLEM</text>
+              <rect x="60" y="50" width="180" height="150" rx="8" fill="#1b3a63" stroke="#39bdf8"/>
+              <text x="150" y="120" font-size="11" fill="#cfe0f5">huge compute</text>
+              <text x="150" y="138" font-size="11" fill="#cfe0f5">+ memory inside</text>
+              <!-- edge I/O arrows only on perimeter -->
+              <g stroke="#e2563f" stroke-width="2.5">
+                <path d="M60 80 H40"/><path d="M60 130 H40"/><path d="M60 170 H40"/>
+                <path d="M240 80 H260"/><path d="M240 130 H260"/><path d="M240 170 H260"/>
+              </g>
+              <text x="150" y="222" font-size="10.5" fill="#aebfd8">data only in/out the EDGES = chokepoint</text>
+            </g>
+            <!-- fix 1 optical -->
+            <g>
+              <text x="455" y="34" font-size="13" font-weight="800" fill="#22b06b">FIX 1 · OPTICAL WAFER</text>
+              <rect x="365" y="62" width="180" height="40" rx="6" fill="#22b06b"/>
+              <text x="455" y="86" font-size="10.5" font-weight="800" fill="#06302c">optical wafer (light I/O)</text>
+              <rect x="365" y="106" width="180" height="94" rx="6" fill="#1b3a63" stroke="#39bdf8"/>
+              <text x="455" y="150" font-size="11" fill="#cfe0f5">compute wafer</text>
+              <g stroke="#22b06b" stroke-width="2"><path d="M395 62 V40"/><path d="M455 62 V40"/><path d="M515 62 V40"/></g>
+              <text x="455" y="222" font-size="10.5" fill="#aebfd8">light in/out the whole SURFACE, not edges</text>
+            </g>
+            <!-- fix 2 hybrid bonded dram -->
+            <g>
+              <text x="765" y="34" font-size="13" font-weight="800" fill="#d6a52a">FIX 2 · HYBRID-BONDED DRAM</text>
+              <rect x="675" y="62" width="180" height="40" rx="6" fill="#3a2c12" stroke="#d6a52a"/>
+              <text x="765" y="86" font-size="10.5" font-weight="800" fill="#f4e6bd">DRAM (more memory)</text>
+              <g stroke="#d6a52a" stroke-width="1.5">
+                <path d="M695 102 V112"/><path d="M725 102 V112"/><path d="M755 102 V112"/><path d="M785 102 V112"/><path d="M815 102 V112"/><path d="M835 102 V112"/>
+              </g>
+              <rect x="675" y="112" width="180" height="88" rx="6" fill="#1b3a63" stroke="#39bdf8"/>
+              <text x="765" y="160" font-size="11" fill="#cfe0f5">compute wafer</text>
+              <text x="765" y="222" font-size="10.5" fill="#aebfd8">memory fused vertically, surface-wide</text>
+            </g>
+          </g>
+        </svg>
+        <p class="fig-cap">The wafer holds far more compute and memory than its thin edge ("shoreline") can feed. Both fixes move I/O off the edges and onto the <strong>whole surface</strong> — one carries <em>data</em> as light, the other stacks <em>memory</em> directly on top.</p>
+      </div>
+
+      <div class="callout plain"><span class="lab">🧒 Plain English — the two fixes</span>
+        <p><strong>Optical wafer (optical I/O):</strong> a second wafer full of tiny <em>lasers and light-guides</em> bonded right on top of the compute wafer. Instead of squeezing data out the edges as electrical signals, it converts data to <strong>light</strong> and beams it on and off across the <em>entire surface</em>. Light is fast, runs cool, and travels far — so it shatters the shoreline limit. (It's "co-packaged optics," Chapter 9, taken to the wafer scale.)</p>
+        <p><strong>Hybrid-bonded DRAM:</strong> a way to stack <em>memory chips</em> directly onto the compute wafer with a connection far better than the usual tiny solder balls. <strong>Hybrid bonding</strong> fuses flat <em>copper pad to copper pad</em> (no solder bump in between), giving connections that are far more numerous, much shorter, faster, and lower-power. That lets Cerebras bolt on lots of extra memory <em>vertically across the whole surface</em> — adding capacity without going through the edges. (Same advanced-packaging family as TSMC's 3D stacking, Chapter 5.)</p>
+      </div>
+
+      <p>Put together, these would let a wafer-scale system feed its enormous compute <em>and</em> hold enough memory to run very large models — Cerebras says its machine can <em>theoretically run any size model</em> (it's simply better at some sizes than others). The takeaway for an investor: the wafer-scale bet is real and genuinely differentiated, but its whole story hinges on solving shoreline I/O — so <strong>watch whether the optical-wafer and hybrid-bonded-memory pieces actually ship at volume.</strong></p>
+
       <h3>Disaggregation extends GPU lifespans — and de-risks the financing</h3>
       <p>Here's a quietly huge consequence. The common bear case is "GPUs are obsolete in 2–3 years, so all this capex is a write-off waiting to happen." Disaggregation undercuts that. Because prefill can run on <em>older, cheaper</em> chips while a fast specialist handles decode, you can put a new inference chip <em>in front of</em> last-generation GPUs and keep the old ones useful for years — Baker argues effective useful lives stretch toward <strong>10–15 years</strong> ("until they melt"), not 3.</p>
       <div class="callout investor"><span class="lab">📈 The Investor's Lens</span>
@@ -2804,6 +2860,10 @@ footer b{color:#dce7f6}
         <dt>Terafab</dt><dd>A reported SpaceX-led venture to build a giant leading-edge chip fab in the US — the boldest attempt to break Taiwan's manufacturing concentration.</dd>
         <dt>MoE (Mixture-of-Experts)</dt><dd>A model design that routes each query to different specialist sub-models; efficient, but needs flexible any-to-any chip networking to inference cheaply.</dd>
         <dt>Scale-up vs scale-out</dt><dd>Scale-up = tightly linking chips <em>within</em> a node/rack (switch-based beats older "torus"); scale-out = connecting many nodes across the cluster.</dd>
+        <dt>Wafer-scale</dt><dd>Using a whole silicon wafer as one giant chip (Cerebras) instead of dicing it into many small ones — removes chip-to-chip wiring.</dd>
+        <dt>Shoreline I/O</dt><dd>The limit that data can only enter/exit a chip around its <em>edges</em>; a wafer-scale chip has huge area but a thin edge, so it's "shoreline-bound."</dd>
+        <dt>Optical wafer / optical I/O</dt><dd>A photonics layer bonded onto a chip that moves data on/off as <em>light</em> across the whole surface, bypassing the edge bottleneck.</dd>
+        <dt>Hybrid bonding</dt><dd>An advanced 3D-packaging method that fuses chips copper-pad-to-copper-pad (no solder bumps) for far denser, shorter, faster, lower-power connections.</dd>
       </dl>
     </div>
   </section>
