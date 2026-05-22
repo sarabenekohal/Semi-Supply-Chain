@@ -956,6 +956,17 @@ footer b{color:#dce7f6}
         <p style="margin-bottom:0">Why does this matter to an investor even if the odds are low? Because ASML's ~100% monopoly is the load-bearing assumption under a huge amount of the value in this whole book. <em>Anything</em> that could crack it is worth tracking — not because it's likely, but because the consequences would be vast.</p>
       </div>
 
+      <div class="callout emerging"><span class="lab">🚀 Emerging Disruption — the "Terafab"</span>
+        <p>The other concentration risk isn't the <em>machine</em> (ASML), it's the <em>place</em>: most leading-edge chips are made on one island. The boldest attempt to change that is what Baker calls the <strong>"Terafab"</strong> — a reported <strong>SpaceX</strong>-led venture (Tesla involved) to build one of the world's largest fabs in the United States. Whether or not it ships on its promised timeline, the <em>logic</em> is what matters, and it's a useful checklist for any "can the West build fabs?" bet:</p>
+        <ul style="margin:6px 0 0">
+          <li><strong>Borrowed institutional knowledge.</strong> A partnership with <strong>Intel (INTC)</strong> would import ~50 years of fab know-how — the thing money alone can't buy — putting a newcomer only a few quarters behind the leading edge instead of decades.</li>
+          <li><strong>The equipment "A-teams" show up.</strong> ASML, KLA, Lam, and Applied Materials privately dislike depending on one dominant customer; they'd staff a credible second source with their best engineers (exactly how TSMC once caught Intel).</li>
+          <li><strong>Talent gravity.</strong> The pitch is to recruit the world's best engineers — even relocating favorite restaurants to build a "Taiwantown / Koreatown / Japantown" beside the fab. Unusual, but a real edge in a talent-bound industry.</li>
+          <li><strong>Speed.</strong> The same operator built a giant AI data center in ~122 days; fabs are far harder, but the cultural willingness to compress timelines is the variable to watch.</li>
+        </ul>
+        <p style="margin-bottom:0">Treat it as high-uncertainty and forward-looking — but it's the single most important "break the Taiwan concentration" story to track, and a live test of whether leading-edge fabs can be stood up elsewhere this decade.</p>
+      </div>
+
       <div class="checklist"><span class="lab">✅ Questions to ask before investing in this layer</span>
         <ol>
           <li>Is <b>ASML's order book</b> (bookings, especially EUV/High-NA) growing faster or slower than wafer demand and customer capex?</li>
@@ -1502,6 +1513,54 @@ footer b{color:#dce7f6}
       <div class="callout plain"><span class="lab">🧒 Plain English</span><p><strong>Latency</strong> = how long you wait for the answer to start. <strong>Throughput</strong> = how many answers you can serve at once. Training cares about raw power; inference cares about latency, throughput, and cost per answer.</p></div>
 
       <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>The startups' challenge is rarely the hardware — it's the <strong>software moat</strong>. Even a faster, cheaper chip struggles if developers have to rewrite everything to use it (the CUDA problem again). So evaluate any "NVIDIA killer" on two axes: <em>is the chip genuinely better for inference, and how painful is it to switch?</em> The realistic bull case for challengers is owning the high-volume, cost-sensitive inference slice — not dethroning NVIDIA in training.</p></div>
+
+      <h3>Prefill vs decode: one job split into two</h3>
+      <p>Inference itself secretly has <em>two</em> phases, and a big recent shift is running them on <em>different</em> hardware ("disaggregation"). A colleague of Baker's offers the perfect image: a cannon on an 18th-century warship.</p>
+      <ul>
+        <li><strong>Prefill = loading the cannon.</strong> The model reads your whole prompt and builds its understanding of it. This is bound by memory <em>capacity</em> (how much it can hold at once).</li>
+        <li><strong>Decode = firing.</strong> The model generates the answer one token at a time. This is bound by memory <em>bandwidth</em> (how fast it can stream data).</li>
+      </ul>
+
+      <div class="fig">
+        <p class="fig-title">Figure 8.2</p>
+        <p class="fig-sub">Why splitting prefill from decode changes the hardware game</p>
+        <svg viewBox="0 0 920 210" role="img" aria-label="Prefill versus decode: loading the cannon versus firing it">
+          <g font-family="inherit">
+            <rect x="30" y="24" width="410" height="160" rx="12" fill="#102a4d" stroke="#39bdf8"/>
+            <text x="56" y="56" font-size="15" font-weight="800" fill="#39bdf8">🧨 PREFILL — "load the cannon"</text>
+            <text x="56" y="84" font-size="12.5" fill="#cfe0f5">Read the whole prompt; build understanding.</text>
+            <text x="56" y="108" font-size="12.5" fill="#cfe0f5">Done once, up front, in a big batch.</text>
+            <text x="56" y="146" font-size="12.5" font-weight="800" fill="#fff">Bound by memory CAPACITY</text>
+            <text x="56" y="168" font-size="11" fill="#aebfd8">→ can run on cheaper / older chips</text>
+
+            <rect x="480" y="24" width="410" height="160" rx="12" fill="#102a4d" stroke="#22b06b"/>
+            <text x="506" y="56" font-size="15" font-weight="800" fill="#22b06b">💥 DECODE — "fire"</text>
+            <text x="506" y="84" font-size="12.5" fill="#cfe0f5">Generate the answer one token at a time.</text>
+            <text x="506" y="108" font-size="12.5" fill="#cfe0f5">Repeated for every word of output.</text>
+            <text x="506" y="146" font-size="12.5" font-weight="800" fill="#fff">Bound by memory BANDWIDTH</text>
+            <text x="506" y="168" font-size="11" fill="#aebfd8">→ wants the fastest specialist chips</text>
+            <path d="M442 104 H478" stroke="#aebfd8" stroke-width="2.5" marker-end="url(#pdar)"/>
+            <defs><marker id="pdar" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 Z" fill="#aebfd8"/></marker></defs>
+          </g>
+        </svg>
+        <p class="fig-cap">Because the two phases stress <em>different</em> things (capacity vs. bandwidth), you can serve them on different, optimized hardware — which is the opening specialist chips paint into, and the reason old GPUs suddenly have a long second life (below).</p>
+      </div>
+
+      <h3>The "Iron Triangle": why a new chip must be different <em>and</em> hard</h3>
+      <p>Baker borrows an idea from tank design: the <strong>Iron Triangle</strong>. A tank designer must trade off armor, mobility, and firepower — you can't max all three; physics forces a choice. Chip design is the same, bounded by the laws of physics baked into TSMC's design rules. That has a brutal investing implication for the "thousand chip startups blooming":</p>
+      <ul>
+        <li><strong>Don't build "a better GPU."</strong> NVIDIA gets the best TSMC pricing, co-optimizes with every model maker, and sees every new TSMC process before anyone. A startup promising a slightly-better GPU on "special TSMC access" is racing the one company that already saw that process first. Good luck.</li>
+        <li><strong>Do something <em>different</em> — and <em>hard</em>.</strong> If your different idea is <em>easy</em>, the big four fast-followers (NVIDIA, plus Amazon's Trainium, Google's TPU, and AMD) will simply copy the trade-off — they make the same chips you do, cheaper. Your edge has to be genuinely hard to replicate.</li>
+        <li><strong>The prize is still big.</strong> Baker's rule of thumb: ~1% of this market is worth roughly <strong>$100 billion</strong> — a great venture outcome. You don't need to beat NVIDIA; you need a defensible sliver.</li>
+      </ul>
+      <p><strong>Cerebras</strong> is the example of "different and hard": <em>wafer-scale</em> computing (one dinner-plate-sized chip) is brutally difficult and lets it do things others can't — though it inherits its own trade-off (limited "shoreline" I/O around the chip's edges, which it's attacking with optical and stacked-memory tricks). <strong>Groq</strong>'s LPU (memory on-chip for steady, fast decode) is another "different" bet. It took Cerebras three chip generations to get it right — a reminder that this game rewards grit, and punishes me-too designs.</p>
+
+      <h3>Disaggregation extends GPU lifespans — and de-risks the financing</h3>
+      <p>Here's a quietly huge consequence. The common bear case is "GPUs are obsolete in 2–3 years, so all this capex is a write-off waiting to happen." Disaggregation undercuts that. Because prefill can run on <em>older, cheaper</em> chips while a fast specialist handles decode, you can put a new inference chip <em>in front of</em> last-generation GPUs and keep the old ones useful for years — Baker argues effective useful lives stretch toward <strong>10–15 years</strong> ("until they melt"), not 3.</p>
+      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span>
+        <p>This reshapes the <em>financing</em> of the whole build-out. A lot of GPUs are bought with debt (private credit) underwritten to ~3–4-year lives at ~7%+ rates. If the real life is 10–15 years, the assets are far less risky — financing costs fall, and the math of the build-out improves. Baker's provocative line: disaggregation "may single-handedly save private credit."</p>
+        <p>Two more second-order reads: (1) owning a big <strong>installed base</strong> of the currently-scarce thing is valuable — "sellers of shortage" do best, but the hyperscalers <em>holding</em> shortage assets benefit too; and (2) <strong>CPUs matter more in an agentic world</strong> (orchestration, tool calls, glue work), and the largest CPU fleets sit at the hyperscalers — an underappreciated asset.</p>
+      </div>
 
       <div class="callout emerging"><span class="lab">🚀 Emerging Disruption</span><p><strong>Inference moving to the edge.</strong> As models shrink, more inference will run directly on phones, laptops, and cars instead of in data centers — pulling in <strong>Apple (AAPL)</strong>, <strong>Qualcomm (QCOM)</strong>, and a wave of low-power "NPU" chips. The center of gravity in AI compute may slowly spread out from giant data centers toward billions of small devices.</p></div>
 
@@ -2088,6 +2147,26 @@ footer b{color:#dce7f6}
 
       <div class="callout investor"><span class="lab">📈 The Investor's Lens — the question under everything</span><p>The frontier-token premium is arguably <em>the</em> question for the AI economy <em>above the silicon</em>. <strong>If it holds</strong>, value pools in the model labs and the compute they buy. <strong>If it collapses</strong>, the model layer becomes a commodity utility and durable profit slides to (a) <em>distribution</em> — the apps, clouds, and harnesses with real users and proprietary data — and (b) the <em>physical</em> picks-and-shovels. The book's through-line: in <em>both</em> outcomes the choke points (TSMC, ASML, memory, power) still get paid. The premium decides who wins <em>above</em> the silicon; it barely changes who wins <em>at</em> it.</p></div>
 
+      <h3>The application layer &amp; the "token path"</h3>
+      <p>Here's a sobering fact Baker stresses: so far, the <strong>application layer has been where value gets <em>destroyed</em></strong>, not created. Even counting the AI-native winners (coding tools like Cursor and Cognition), AI has on net <em>erased</em> trillions of dollars of value at the app layer — because a feature you built can be swallowed by the next model release, or by the model company itself. In Jensen Huang's "five-layer cake" (energy → data centers → chips → models → apps), the profits have accrued to the <em>bottom</em> layers, not the apps.</p>
+      <p>The survival rule (from Altimeter's Jamin Ball, via Baker) is to be <strong>"in the token path"</strong> — to sit somewhere that every AI query has to flow through, so you get paid as usage grows (Databricks is the classic example). If you're <em>not</em> in the token path, you need a genuinely defensible niche: a <strong>data moat</strong> built before the big model labs bother to enter it, and small enough that they may never bother — yet still big enough to matter.</p>
+      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>Two cautions for app-layer bets. (1) <strong>"Will it get steamrolled?"</strong> — ask whether the idea becomes obvious to the world (and to the model labs) <em>before</em> the company reaches real scale; if yes, it's in trouble. (2) <strong>The niche-data bet is harder than it looks</strong>: you're wagering that proprietary vertical data lets you train something cheaper-and-better than the frontier can reach — but that data is generated by humans and may simply teach the frontier too. The cleaner exposure remains "token path" companies and the picks-and-shovels beneath them.</p></div>
+
+      <h3>The hyperscaler scorecard (Baker's read)</h3>
+      <p>How the giant clouds are positioned — framed as Baker's qualitative read, not a forecast (and rates of change matter more than levels over a few years):</p>
+      <div class="tablewrap">
+      <table>
+        <thead><tr><th>Player</th><th>Position</th><th>Key tell to watch</th></tr></thead>
+        <tbody>
+          <tr><td class="co-name">Google (GOOGL)</td><td>Strongest structural hand: the <em>most</em> compute and the largest installed base, plus unmatched data (Search, YouTube — valuable for robotics) and a surging cloud.</td><td>Whether its models keep leapfrogging rivals, or whether it leans on raw compute advantage.</td></tr>
+          <tr><td class="co-name">Amazon (AMZN)</td><td>Strong via <strong>Trainium</strong> (its custom chip gaining traction) and looming robotics efficiencies in retail; deeply engaged with startups.</td><td>Trainium ramp + whether in-house models close the gap.</td></tr>
+          <tr><td class="co-name">Meta (META)</td><td>The one legacy giant that genuinely became "AI-first" internally; paid up aggressively for talent.</td><td>Whether its models reach the Pareto frontier; return on its talent spending.</td></tr>
+          <tr><td class="co-name">Microsoft (MSFT)</td><td>Making a courageous, market-punished bet: using its compute for <em>its own</em> products/models rather than just reselling to OpenAI — positioning for a world where frontier models go closed-API.</td><td>Whether it builds a model team that can compete; Azure growth vs. that internal allocation.</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>One non-obvious differentiator: <strong>who actually engages with startups.</strong> NVIDIA and Amazon are the most deeply engaged, Google close behind, and Broadcom is everyone's favorite ASIC partner — while AMD, Microsoft, and Meta engage far less. Since many of the best chip teams are now <em>at startups</em>, that engagement is a quiet, compounding edge for NVIDIA and Amazon.</p></div>
+
       <div class="callout emerging"><span class="lab">🚀 Emerging Disruption</span><p><strong>Cracking the CUDA moat.</strong> Open compilers and "write once, run anywhere" projects (e.g. <strong>Triton</strong>, <strong>OpenAI</strong>'s and others' efforts) aim to let code run on <em>any</em> chip, not just NVIDIA's. If they succeed, the hardware playing field levels and competition shifts back to raw price-performance — the single biggest swing factor for the whole industry's profit map.</p></div>
 
       <div class="checklist"><span class="lab">✅ Questions to ask before investing in this layer</span>
@@ -2143,6 +2222,11 @@ footer b{color:#dce7f6}
           <p style="font-size:14.5px;color:#43576f">A fundamentally different kind of computer that could crack specific problems classical chips can't. <strong>Not</strong> a near-term AI-training replacement — more a parallel track.</p>
           <p style="font-size:13.5px;color:#5b6b82"><strong>The catch:</strong> still early, error-prone, and narrow. <br><strong>Players:</strong> <strong>IBM (IBM)</strong>, <strong>Google (GOOGL)</strong>, <strong>IonQ (IONQ)</strong>, <strong>Rigetti (RGTI)</strong>, <strong>PsiQuantum</strong> (private).</p>
         </div>
+      </div>
+
+      <div class="callout note"><span class="lab">🛰️ Reframing orbital compute (Baker)</span>
+        <p>"Data centers in space" sounds absurd if you picture a Pentagon-sized building in orbit. Baker reframes it: it's <strong>racks in space connected by lasers</strong>. A single satellite is roughly one rack with ~500-foot solar wings, parked in a <strong>sun-synchronous orbit</strong> so the panels are <em>always</em> in sunlight, with a long radiator trailing behind to dump heat into the cold of space. Link many such racks with laser beams through vacuum (exactly what every Starlink already does) and you have a virtual data center.</p>
+        <p>Why take it seriously: the same operator already flies ~99% of the world's satellites and <em>cools</em> a ~20 kW Starlink today (a Blackwell rack is ~100 kW), and reusable launch is the thing only it has proven. The likely split: <strong>training stays on Earth</strong> for a long time; <strong>inference</strong> suits orbit. And if terrestrial data centers hit regulatory/zoning walls, orbital compute becomes the release valve — Baker expects power shortages to ease in <strong>2027–28</strong>, with orbital helping solve the long term.</p>
       </div>
 
       <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>Frontier bets follow a barbell logic: most fail or arrive late, a few pay off spectacularly. Two practical filters: (1) <strong>does it ride an existing supply chain or need a brand-new one?</strong> (riding existing rails — like co-packaged optics through TSMC — is far more investable than inventing a new industry); and (2) <strong>is it solving the binding constraint</strong> — power and heat — rather than a problem we've already mostly solved? The frontier tech aimed at energy efficiency and cooling has the clearest path to mattering.</p></div>
@@ -2628,6 +2712,11 @@ footer b{color:#dce7f6}
         <dt>Context window</dt><dd>A model's short-term "scratchpad" memory for the current task; it resets between sessions.</dd>
         <dt>Bitter Lesson</dt><dd>The recurring AI finding that general methods which scale with compute beat hand-engineered, human-knowledge tricks.</dd>
         <dt>Frontier tokens</dt><dd>Output from the most advanced models, which today command a price premium because the best models are scarce.</dd>
+        <dt>Prefill / decode</dt><dd>The two phases of inference: prefill = reading the prompt (memory-capacity-bound, "loading the cannon"); decode = generating the answer token-by-token (memory-bandwidth-bound, "firing").</dd>
+        <dt>Disaggregation</dt><dd>Splitting prefill and decode onto different, optimized hardware — which also lets older GPUs stay useful for years.</dd>
+        <dt>Iron Triangle</dt><dd>The idea (from tank design) that a chip designer must trade off competing properties; you can't max everything, so a winning startup must pick a hard, different trade-off.</dd>
+        <dt>Token path</dt><dd>Being positioned so every AI query flows through you (and you get paid as usage grows); the survival test for software/AI businesses.</dd>
+        <dt>Terafab</dt><dd>A reported SpaceX-led venture to build a giant leading-edge chip fab in the US — the boldest attempt to break Taiwan's manufacturing concentration.</dd>
       </dl>
     </div>
   </section>
