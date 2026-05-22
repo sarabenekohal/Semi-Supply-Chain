@@ -1336,7 +1336,83 @@ footer b{color:#dce7f6}
       <h3>The merchant chip: NVIDIA's GPU</h3>
       <p><strong>NVIDIA (NVDA)</strong> doesn't keep its chips — it sells them to <em>everyone</em>: startups, governments, cloud companies. Its real moat isn't only the silicon; it's <strong>CUDA</strong>, the software developers have used for 15+ years. Millions of AI programs are written for CUDA, and rewriting them for a rival chip is painful — so even when a competitor's hardware is good, customers stay. (Chapter 12 digs into this.)</p>
 
-      <h3>The custom chips: TPU & Trainium</h3>
+      <h4>The generation treadmill: Hopper → Blackwell → Rubin → …</h4>
+      <p>You'll constantly hear chips referred to by a generation name. NVIDIA names each new <em>architecture</em> after a famous scientist, and has shifted to a roughly <strong>once-a-year</strong> release cadence — a brutal pace that keeps competitors and customers perpetually chasing. Each generation packs in more compute, more memory bandwidth, and better efficiency (performance-per-watt), which is exactly what the scaling laws (Chapter 14) keep demanding.</p>
+
+      <div class="fig">
+        <p class="fig-title">Figure 7.3</p>
+        <p class="fig-sub">NVIDIA's data-center GPU roadmap — each named after a scientist</p>
+        <svg viewBox="0 0 920 250" role="img" aria-label="NVIDIA GPU architecture roadmap from Volta to Feynman">
+          <g font-family="inherit" text-anchor="middle">
+            <!-- spine: solid past, dashed future -->
+            <line x1="95" y1="120" x2="650" y2="120" stroke="#39bdf8" stroke-width="3"/>
+            <line x1="650" y1="120" x2="835" y2="120" stroke="#22b06b" stroke-width="3" stroke-dasharray="6 5"/>
+            <!-- Volta -->
+            <g>
+              <circle cx="95" cy="120" r="9" fill="#3a5a82"/>
+              <text x="95" y="92" font-size="12" font-weight="800" fill="#9fb3d1">2017</text>
+              <text x="95" y="150" font-size="13" font-weight="800" fill="#cfe0f5">Volta</text>
+              <text x="95" y="168" font-size="10.5" fill="#9fb3d1">V100</text>
+            </g>
+            <!-- Ampere -->
+            <g>
+              <circle cx="205" cy="120" r="9" fill="#3a5a82"/>
+              <text x="205" y="92" font-size="12" font-weight="800" fill="#9fb3d1">2020</text>
+              <text x="205" y="150" font-size="13" font-weight="800" fill="#cfe0f5">Ampere</text>
+              <text x="205" y="168" font-size="10.5" fill="#9fb3d1">A100</text>
+            </g>
+            <!-- Hopper -->
+            <g>
+              <circle cx="350" cy="120" r="12" fill="#39bdf8"/>
+              <text x="350" y="90" font-size="12" font-weight="800" fill="#39bdf8">2022</text>
+              <text x="350" y="152" font-size="14" font-weight="800" fill="#fff">Hopper</text>
+              <text x="350" y="170" font-size="11" fill="#cfe0f5">H100 · H200</text>
+              <text x="350" y="188" font-size="10" fill="#9fb3d1">the AI-boom workhorse</text>
+            </g>
+            <!-- Blackwell (current, gold) -->
+            <g>
+              <circle cx="500" cy="120" r="14" fill="#d6a52a"/>
+              <text x="500" y="88" font-size="12" font-weight="800" fill="#d6a52a">2024–25</text>
+              <text x="500" y="152" font-size="14" font-weight="800" fill="#fff">Blackwell</text>
+              <text x="500" y="170" font-size="11" fill="#f4e6bd">B200 · GB200</text>
+              <text x="500" y="188" font-size="10" fill="#f4e6bd">current flagship (+ Ultra)</text>
+            </g>
+            <!-- Rubin (next, green) -->
+            <g>
+              <circle cx="650" cy="120" r="12" fill="#22b06b"/>
+              <text x="650" y="90" font-size="12" font-weight="800" fill="#22b06b">2026e</text>
+              <text x="650" y="152" font-size="14" font-weight="800" fill="#fff">Rubin</text>
+              <text x="650" y="170" font-size="11" fill="#cfe0f5">+ "Vera" CPU</text>
+              <text x="650" y="188" font-size="10" fill="#9fb3d1">the next one</text>
+            </g>
+            <!-- Feynman (future) -->
+            <g>
+              <circle cx="800" cy="120" r="10" fill="#0e2038" stroke="#22b06b" stroke-width="2.5"/>
+              <text x="800" y="92" font-size="12" font-weight="800" fill="#22b06b">~2028e</text>
+              <text x="800" y="150" font-size="13" font-weight="800" fill="#cfe0f5">Feynman</text>
+              <text x="800" y="168" font-size="10.5" fill="#9fb3d1">on the roadmap</text>
+            </g>
+            <text x="460" y="228" font-size="11" fill="#aebfd8" text-anchor="middle">Named for: Volta · Ampère · Grace Hopper · David Blackwell · Vera Rubin · Richard Feynman</text>
+          </g>
+        </svg>
+        <p class="fig-cap"><strong>Blue = shipping today, gold = current flagship, green = announced/roadmap.</strong> Dates and future names are approximate (NVIDIA's published roadmap); the key point is the relentless ~annual cadence. NVIDIA increasingly sells whole <em>rack-scale systems</em> (e.g. GB200 NVL72), not just chips.</p>
+      </div>
+
+      <p>The other chip families move on their own tracks: <strong>AMD (AMD)</strong> Instinct (MI300 → MI350 → MI400), Google's <strong>TPU</strong> (v5 → Trillium → Ironwood), and Amazon's <strong>Trainium</strong> (Trainium2 → Trainium3). The pattern everywhere is the same: a new, more efficient generation roughly every year, because whoever leads on performance-per-watt captures the demand.</p>
+
+      <h3>The custom chips: what an ASIC actually is</h3>
+      <p>The custom chips above are all <strong>ASICs</strong> — short for <strong>Application-Specific Integrated Circuit</strong>. The name says it all: a chip built for <em>one specific application</em>, rather than to be flexible. Where a GPU is a general-purpose tool anyone can use for many tasks, an ASIC is hard-wired to do a single job and strip out everything else.</p>
+
+      <div class="analogy"><div class="ic">🔧</div><div><strong>Analogy:</strong> A GPU is a <strong>Swiss Army knife</strong> — it does lots of things reasonably well, so anyone can grab one for any task. An ASIC is a <strong>custom-cut key</strong> — useless for anything but its one lock, yet cheaper, faster, and more efficient at opening <em>that</em> door. If you open the same door a billion times a day, you want the key, not the knife.</div></div>
+
+      <p>So why doesn't everyone use ASICs? Because designing one costs a fortune and takes years, and the result can't adapt if your needs change. The math only works if you run the <em>same</em> workload at enormous scale — which is exactly the situation a hyperscaler is in. The trade-off in one line:</p>
+      <ul>
+        <li><strong>GPU (general-purpose):</strong> flexible, runs any model, buy it off the shelf — but you pay a premium and carry overhead you may not use.</li>
+        <li><strong>ASIC (custom):</strong> cheaper and far more power-efficient <em>for its specific job</em> — but expensive to design, slow to change, and useless outside that purpose.</li>
+      </ul>
+      <p>You'll also hear the umbrella term <strong>XPU</strong> — a catch-all for "any AI accelerator," whether it's a GPU or a custom ASIC. TPU, Trainium, Maia, and MTIA are all ASICs.</p>
+
+      <h4>Who builds custom ASICs — and why they bother</h4>
       <p><strong>Google (GOOGL)</strong> (<strong>TPU</strong>) and <strong>Amazon (AMZN)</strong> (<strong>Trainium</strong>/<strong>Inferentia</strong>) buy huge numbers of NVIDIA GPUs — but they <em>also</em> design their own chips to cut their dependence and their costs. They don't sell these chips; they rent them to <em>you</em> through their clouds. They lean on <strong>Broadcom (AVGO)</strong> and <strong>Marvell (MRVL)</strong> for the hard parts and on TSMC to build them. <strong>Microsoft (MSFT)</strong> (<strong>Maia</strong>) and <strong>Meta (META)</strong> (<strong>MTIA</strong>) are doing the same.</p>
 
       <h4>Why Marvell matters more than its name suggests</h4>
