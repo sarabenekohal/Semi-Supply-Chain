@@ -1438,6 +1438,33 @@ footer b{color:#dce7f6}
       </ul>
       <p>Broadcom is the bigger, dominant player (it co-designs Google's TPU and others); Marvell is the strong <strong>#2</strong>, associated with programs like Amazon's Trainium and Microsoft's efforts, plus a large optics business. The investment thesis is clean: <strong>Marvell is a way to bet on the custom-ASIC wave without picking which hyperscaler wins</strong> — every new in-house chip program is a potential customer. The risk is equally clear: its fortunes ride on a handful of giant, demanding customers who could in-source more over time or squeeze on price.</p>
 
+      <h3>Who excels at what: GPU vs TPU vs Trainium vs AMD</h3>
+      <p>Here's the crucial framing from Baker: <strong>TPU, Trainium, and AMD are all essentially trying to be "a better GPU" — and nobody has actually built one.</strong> NVIDIA's GPU is still the general-purpose king. So the right question isn't "who beats NVIDIA," it's "who is best for <em>which</em> job." Baker's read on the standings (a snapshot — these change):</p>
+      <ul>
+        <li><strong>Trainium (Amazon) is doing best</strong> among the challengers — "tugging on Superman's cape." Its newest generation adds a <em>switch-based scale-up network</em> (see below), which you really need to inference modern models economically. This is a big reason Amazon is well-positioned.</li>
+        <li><strong>TPU (Google)</strong> had a real per-token <em>cost</em> advantage — and then partly gave it up by making <em>conservative</em> design choices on its latest generation (in part to reduce its dependence on Broadcom). Google is now moving its networking toward a switch-based scale-up design too. Still formidable given Google's compute and data, but the edge narrowed.</li>
+        <li><strong>AMD</strong> is "always flying a little bit behind" — the most NVIDIA-like, buyable GPU alternative, but consistently a step back; its next-generation parts are a wait-and-see.</li>
+      </ul>
+
+      <div class="callout plain"><span class="lab">🧒 Plain English — the hidden differentiator</span><p>When you wire thousands of chips together, <strong>how</strong> you wire them matters enormously. A <strong>switch-based "scale-up" network</strong> lets every chip talk to every other chip flexibly (like a phone exchange); an older <strong>"torus"</strong> layout only lets each chip talk to its neighbors (like passing notes down a row). Modern <strong>MoE</strong> ("Mixture-of-Experts") models — which route each query to different specialist sub-models — need that flexible any-to-any switching to run cheaply. That's why "switch vs. torus" quietly decides who can inference today's models economically.</p></div>
+
+      <div class="tablewrap">
+      <table>
+        <thead><tr><th>Chip</th><th>Type</th><th>Excels at</th><th>Where it's weak / the catch</th></tr></thead>
+        <tbody>
+          <tr><td class="co-name">NVIDIA GPU</td><td>Merchant, general-purpose</td><td>Everything — especially <strong>frontier training</strong>; the software (CUDA), works with every model maker, best TSMC pricing, sold to anyone</td><td>Premium price; you're renting NVIDIA's pricing power</td></tr>
+          <tr><td class="co-name">Trainium (Amazon)</td><td>Custom ASIC (in-house)</td><td><strong>Cost-efficient training &amp; MoE inference</strong> for AWS workloads; strong scale-up networking</td><td>Only via AWS; useless outside its purpose; software less mature than CUDA</td></tr>
+          <tr><td class="co-name">TPU (Google)</td><td>Custom ASIC (in-house)</td><td><strong>Massive-scale, low-cost</strong> training/inference for Google's own models; huge installed base</td><td>Only via Google Cloud; latest-gen ceded some cost edge</td></tr>
+          <tr><td class="co-name">AMD Instinct</td><td>Merchant GPU</td><td>A <strong>buyable second-source</strong> to NVIDIA; competitive raw specs</td><td>Software (ROCm) behind CUDA; perennially a step behind</td></tr>
+          <tr><td class="co-name">Groq (LPU)</td><td>Specialist ASIC</td><td><strong>Ultra-low-latency inference</strong> (fast, steady token output)</td><td>Narrower use; "different &amp; hard" bet (Chapter 8)</td></tr>
+          <tr><td class="co-name">Cerebras</td><td>Wafer-scale</td><td>Running a <strong>giant model without complex interconnect</strong></td><td>Limited edge I/O ("shoreline"); its own trade-offs</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p>The pattern: <strong>NVIDIA for flexibility and the frontier; the hyperscaler ASICs (TPU, Trainium) for cheap, massive scale on their own clouds; AMD as the buyable alternative; and the specialists (Groq, Cerebras) for specific shapes of the problem.</strong> Crucially, "a better GPU" is a losing pitch — the winners either own a cloud (so cost beats flexibility) or do something genuinely different and hard (Chapter 8).</p>
+
+      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>Two leading indicators to track the race: (1) <strong>scale-up networking</strong> — whoever has flexible switch-based networking (vs. an older torus) can inference MoE models cheaply, a real edge; watch each new ASIC generation for it. (2) The <strong>Pareto frontier of intelligence-vs-cost</strong> (Chapter 14) at the <em>model</em> layer is downstream of these <em>chip</em> choices — e.g., a conservative TPU generation showed up as Google losing per-token cost leadership. Chip design decisions ripple up into who can serve the cheapest, smartest tokens.</p></div>
+
       <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>This is the central debate in AI hardware investing: <strong>merchant (NVIDIA) vs. custom (ASIC)</strong>. NVIDIA wins on flexibility, software lock-in, and being available to all. Custom chips win on cost and efficiency <em>for the giant who designed them</em>. The quiet winner either way is <strong>Broadcom</strong>, which helps build most of the custom chips — and, of course, <strong>TSMC</strong>, which builds <em>all</em> of them. When two armies fight, sell ammunition to both.</p></div>
 
       <div class="callout choke"><span class="lab">⛓️ Choke Point</span><p>No matter which chip "wins," the same handful of suppliers gets paid: TSMC (fab + packaging), the big-three memory makers (HBM), and ASML (the machines behind it all). This is why those names are so valuable — they're indifferent to the war happening above them.</p></div>
@@ -2717,6 +2744,8 @@ footer b{color:#dce7f6}
         <dt>Iron Triangle</dt><dd>The idea (from tank design) that a chip designer must trade off competing properties; you can't max everything, so a winning startup must pick a hard, different trade-off.</dd>
         <dt>Token path</dt><dd>Being positioned so every AI query flows through you (and you get paid as usage grows); the survival test for software/AI businesses.</dd>
         <dt>Terafab</dt><dd>A reported SpaceX-led venture to build a giant leading-edge chip fab in the US — the boldest attempt to break Taiwan's manufacturing concentration.</dd>
+        <dt>MoE (Mixture-of-Experts)</dt><dd>A model design that routes each query to different specialist sub-models; efficient, but needs flexible any-to-any chip networking to inference cheaply.</dd>
+        <dt>Scale-up vs scale-out</dt><dd>Scale-up = tightly linking chips <em>within</em> a node/rack (switch-based beats older "torus"); scale-out = connecting many nodes across the cluster.</dd>
       </dl>
     </div>
   </section>
