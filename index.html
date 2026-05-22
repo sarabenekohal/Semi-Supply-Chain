@@ -818,12 +818,12 @@ footer b{color:#dce7f6}
         <li><strong>Etch &amp; deposit.</strong> Carve the exposed silicon, or lay down metal/insulator, following that pattern.</li>
         <li><strong>Repeat.</strong> Strip the resist and do it all again for the next layer — until billions of transistors are stacked up correctly.</li>
       </ol>
-      <p>The single most important number is the <strong>wavelength of the light</strong>. For 20 years the industry used "deep ultraviolet" (DUV) light at 193 nanometers. To draw features <em>smaller</em> than the light itself, fabs resorted to <strong>multiple patterning</strong> — exposing the same layer several times with slightly shifted masks to fake finer lines. It works, but each extra pass adds cost, time, and defect risk. EUV's whole point is to skip that pain with much shorter light.</p>
+      <p>The single most important number is the <strong>wavelength of the light</strong>. For 20 years the industry used "deep ultraviolet" (DUV) light at 193 nm. To draw features <em>smaller</em> than the light itself, fabs resorted to <strong>multiple patterning</strong> — exposing the same layer several times with slightly shifted masks to fake finer lines. It works, but each extra pass adds cost, time, and defect risk. EUV's whole point is to skip that pain with much shorter light.</p>
 
       <div class="fig light">
         <p class="fig-title">Figure 4.1</p>
         <p class="fig-sub">The light keeps shrinking — lithography generations</p>
-        <svg viewBox="0 0 920 230" role="img" aria-label="Lithography generations from DUV 193nm to EUV 13.5nm to High-NA EUV">
+        <svg viewBox="0 0 920 230" role="img" aria-label="Lithography generations from DUV 193 nm to EUV 13.5 nm to High-NA EUV">
           <g font-family="inherit">
             <line x1="60" y1="150" x2="880" y2="150" stroke="#cfd8e6" stroke-width="2"/>
             <!-- wavelength shrinking bars -->
@@ -2129,7 +2129,7 @@ footer b{color:#dce7f6}
         <p><strong>Performance-per-watt</strong> — capability per unit of <em>electricity</em>. Since power is the bottleneck (Chapter 11), this is arguably the most important efficiency metric of all.</p>
         <p><strong>Performance-per-dollar</strong> — capability per unit of <em>money</em>. This is the metric that decides whether a challenger chip can beat NVIDIA in practice.</p>
         <p><strong>Tokens-per-second &amp; latency</strong> — how fast a model produces words, and how long you wait. The key inference-quality metrics.</p>
-        <p><strong>Utilization (e.g. "MFU")</strong> — what fraction of a chip's theoretical power you actually use. Real clusters often waste a lot; closing that gap is pure profit.</p>
+        <p><strong>Utilization (Model FLOPs Utilization, or "MFU")</strong> — what fraction of a chip's theoretical power you actually use. Real clusters often waste a lot; closing that gap is pure profit.</p>
       </div>
 
       <h3>The Pareto frontier: the "no free lunch" map</h3>
@@ -2503,7 +2503,7 @@ footer b{color:#dce7f6}
         <dt>Ingot</dt><dd>The single giant silicon crystal that gets sliced into wafers.</dd>
         <dt>Photoresist</dt><dd>The light-sensitive coating on a wafer that captures the printed pattern.</dd>
         <dt>Lithography</dt><dd>Printing a chip's pattern with light — the core step of chipmaking.</dd>
-        <dt>DUV</dt><dd>Deep-ultraviolet light (193nm) — the older, "fatter" light used before EUV.</dd>
+        <dt>DUV</dt><dd>Deep-ultraviolet light (193 nm) — the older, "fatter" light used before EUV.</dd>
         <dt>High-NA EUV</dt><dd>ASML's next-gen EUV with a bigger lens; the path to 2nm and below.</dd>
         <dt>Multiple patterning</dt><dd>Exposing one layer several times to fake finer lines than the light allows; costly.</dd>
         <dt>Nanoimprint (NIL)</dt><dd>Canon's stamp-based alternative to light lithography — cheaper but more defect-prone.</dd>
@@ -2539,7 +2539,7 @@ footer b{color:#dce7f6}
         <dt>LLM</dt><dd>Large Language Model — the "brain" (ChatGPT, Claude, Gemini) that predicts the next token.</dd>
         <dt>Performance-per-watt</dt><dd>Capability per unit of electricity — the key metric when power is the bottleneck.</dd>
         <dt>Test-time compute</dt><dd>Letting a model "think longer" when answering — a new way to scale capability.</dd>
-        <dt>Utilization (MFU)</dt><dd>What fraction of a chip's theoretical power you actually use; closing the gap = profit.</dd>
+        <dt>Utilization (MFU)</dt><dd>Model FLOPs Utilization — what fraction of a chip's theoretical power you actually use; closing the gap = profit.</dd>
         <dt>Book-to-bill</dt><dd>New orders ÷ shipments; above 1.0 = demand outrunning supply.</dd>
         <dt>Capex</dt><dd>Capital expenditure — the money companies spend building capacity; the demand signal to watch.</dd>
         <dt>Picks and shovels</dt><dd>The suppliers everyone must buy from regardless of which AI app wins.</dd>
