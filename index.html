@@ -1875,6 +1875,37 @@ footer b{color:#dce7f6}
 
       <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>This is the most "boring" part of the chain and one of the most leveraged to AI. These firms sell <em>more</em> content per rack every year as cooling and power needs intensify — a rising tide regardless of which chip wins. The moats are real but smaller (patents, engineering, installed-base relationships) than the silicon monopolies, so watch competition and margins. Still: when you can't tell which AI app will win, "sell the cooling and power to all of them" is a clean thesis.</p></div>
 
+      <h3>Storage &amp; systems: feeding the GPUs</h3>
+      <p>One layer the compute story often skips: where does all the <em>data</em> live, and how does it reach the chips? GPUs are the most expensive thing in the building, so the cardinal sin is letting them sit <strong>idle waiting for data</strong>. Training reads enormous datasets over and over and writes giant "checkpoints"; inference and <strong>RAG</strong> (retrieval-augmented generation) need to fetch relevant data fast. Storage is the <strong>data plumbing</strong> that keeps utilization — and therefore the economics — high.</p>
+      <p>It helps to separate two things people lump together as "storage":</p>
+      <ul>
+        <li><strong>The media (the actual drives).</strong> <em>NAND flash</em> SSDs (fast, pricier) and <em>hard disk drives</em> (HDDs — cheap, huge capacity). These are made by the memory/drive makers from Chapter 6 — Micron, Samsung, SK Hynix, Kioxia for NAND; <strong>Seagate (STX)</strong> and <strong>Western Digital (WDC)</strong> for HDDs.</li>
+        <li><strong>The systems &amp; software (the vendors below).</strong> Companies that package those drives into fast, reliable systems with the <em>software</em> that manages, protects, and serves the data. This is where NetApp, Pure, VAST and friends live — they mostly <em>buy</em> the drives and add the system and software around them.</li>
+      </ul>
+
+      <div class="tablewrap">
+      <table>
+        <thead><tr><th>Company</th><th>Status</th><th>What it is</th><th>How it differs</th></tr></thead>
+        <tbody>
+          <tr><td class="co-name">NetApp</td><td><span class="tk">NTAP</span></td><td>Enterprise-storage incumbent; its <strong>ONTAP</strong> software manages data across on-prem and clouds</td><td>Breadth + sticky installed base + data management; a general-purpose vendor adapting to AI</td></tr>
+          <tr><td class="co-name">Pure Storage</td><td><span class="tk">PSTG</span></td><td>All-<strong>flash</strong> pioneer; clean software, subscription ("Evergreen"), custom flash modules</td><td>Flash-first efficiency &amp; low power; pitching flash to replace even bulk HDDs; hyperscaler design wins</td></tr>
+          <tr><td class="co-name">VAST Data</td><td><span class="tk priv">Private</span></td><td>AI-native, all-flash "disaggregated shared-everything" platform built to feed huge GPU clusters</td><td>Purpose-built for AI scale; popular with neoclouds/labs; pushing into a full data platform</td></tr>
+          <tr><td class="co-name">WEKA</td><td><span class="tk priv">Private</span></td><td>Software-defined high-performance <strong>parallel file system</strong> (runs on others' hardware or cloud)</td><td>Pure speed for training pipelines; software-only, hardware-agnostic</td></tr>
+          <tr><td class="co-name">DDN</td><td><span class="tk priv">Private</span></td><td>Long-time HPC/AI storage specialist used in many of the largest GPU clusters</td><td>Proven at the very largest AI/supercomputing scale</td></tr>
+          <tr><td class="co-name">Dell</td><td><span class="tk">DELL</span></td><td>Broad incumbent — storage (PowerScale/PowerStore) <em>and</em> the servers from above</td><td>One-stop scale; overlaps everyone but differentiates less</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h4>Adjacent things to be aware of</h4>
+      <ul>
+        <li><strong>The flash-vs-HDD debate.</strong> Flash vendors (Pure) argue all-flash will displace high-capacity HDDs even for cheap "data-lake" storage — better power and density. HDD makers (<strong>Seagate</strong>, <strong>Western Digital</strong>) counter that HDDs stay far cheaper per terabyte, and new <strong>HAMR</strong> (heat-assisted magnetic recording) tech keeps raising their capacity. AI's data explosion lifts <em>both</em>, but the mix shift is a real investment question — and a power-efficiency one in a power-constrained world.</li>
+        <li><strong>Storage networking.</strong> Feeding GPUs fast needs more than drives — it needs fast links (RDMA, <strong>NVMe-over-Fabrics</strong>) so storage isn't the bottleneck. This ties back to the interconnect names in Chapter 9.</li>
+        <li><strong>The data/software layer above storage.</strong> Holding bytes is one thing; <em>organizing</em> them for AI is another. That's where <strong>Databricks</strong>, <strong>Snowflake (SNOW)</strong>, and <strong>vector databases</strong> (e.g. Pinecone) for RAG sit — covered as the data platforms in Chapter 12.</li>
+      </ul>
+
+      <div class="callout investor"><span class="lab">📈 The Investor's Lens</span><p>Storage is a genuine AI picks-and-shovels beneficiary, but a <em>competitive</em> one — not a choke point like TSMC. The single metric it sells against is <strong>GPU utilization</strong>: storage that keeps $30,000 chips busy pays for itself. Distinguish the <strong>AI-native flash</strong> players built to feed GPU clusters (VAST, WEKA, DDN, Pure) from the <strong>general enterprise</strong> incumbents adapting to AI (NetApp, Dell). Then watch two swing factors: the flash-vs-HDD mix, and whether these vendors' <em>software</em> (data management, not just boxes) keeps them sticky as cloud-native and AI-native rivals attack.</p></div>
+
       <div class="callout emerging"><span class="lab">🚀 Emerging Disruption</span><p><strong>Two-phase immersion &amp; direct-to-chip at scale.</strong> The next step removes pumps and manifolds almost entirely by letting fluid <em>boil</em> on the silicon (two-phase). Companies like <strong>Vertiv</strong> and <strong>LiquidStack</strong> are commercializing it. If it works at scale, it could reset the economics of how densely chips can be packed.</p></div>
 
       <div class="checklist"><span class="lab">✅ Questions to ask before investing in this layer</span>
@@ -2516,6 +2547,7 @@ footer b{color:#dce7f6}
           <tr><td class="co-name">Amphenol</td><td><span class="tk">APH</span></td><td>Connectors/cables</td><td>High-speed copper interconnect &amp; connectors</td><td>Scale + relationships · <span class="tag-pill pill-weak">🟧</span></td></tr>
           <tr><td class="co-name">Vertiv</td><td><span class="tk">VRT</span></td><td>Cooling &amp; power gear</td><td>Liquid cooling, CDUs, power systems</td><td>Patents + scale · <span class="tag-pill pill-weak">🟧</span></td></tr>
           <tr><td class="co-name">Eaton / Schneider</td><td><span class="tk">ETN</span> + listings</td><td>Electrical equipment</td><td>Transformers, switchgear, power distribution</td><td>Scale + relationships · <span class="tag-pill pill-weak">🟧</span></td></tr>
+          <tr><td class="co-name">NetApp / Pure / VAST</td><td><span class="tk">NTAP</span> <span class="tk">PSTG</span> <span class="tk priv">+ private</span></td><td>Storage &amp; data systems</td><td>Storage that feeds data to GPUs (flash arrays, file systems, data mgmt)</td><td>Software stickiness (competitive) · <span class="tag-pill pill-weak">🟧</span></td></tr>
           <tr><td class="co-name">Vistra / Constellation</td><td><span class="tk">VST</span> <span class="tk">CEG</span></td><td>Power generation</td><td>Existing reliable (incl. nuclear) baseload power</td><td>Resource (scarce power) · <span class="tag-pill pill-strong">🟩</span></td></tr>
           <tr><td class="co-name">Bloom Energy</td><td><span class="tk">BE</span></td><td>On-site power</td><td>Fuel cells that skip the grid queue</td><td>Know-how · <span class="tag-pill pill-weak">🟧</span></td></tr>
           <tr><td class="co-name">Oklo / NuScale</td><td><span class="tk">OKLO</span> <span class="tk">SMR</span></td><td>Nuclear (SMR)</td><td>Factory-built reactors next to campuses (future)</td><td>Optionality · <span class="tag-pill pill-weak">🟧</span></td></tr>
@@ -2864,6 +2896,9 @@ footer b{color:#dce7f6}
         <dt>Shoreline I/O</dt><dd>The limit that data can only enter/exit a chip around its <em>edges</em>; a wafer-scale chip has huge area but a thin edge, so it's "shoreline-bound."</dd>
         <dt>Optical wafer / optical I/O</dt><dd>A photonics layer bonded onto a chip that moves data on/off as <em>light</em> across the whole surface, bypassing the edge bottleneck.</dd>
         <dt>Hybrid bonding</dt><dd>An advanced 3D-packaging method that fuses chips copper-pad-to-copper-pad (no solder bumps) for far denser, shorter, faster, lower-power connections.</dd>
+        <dt>RAG</dt><dd>Retrieval-Augmented Generation — fetching relevant data and feeding it to a model at answer-time; a big driver of fast storage demand.</dd>
+        <dt>Parallel file system</dt><dd>Storage software that streams data to many GPUs at once at very high speed, so the chips don't sit idle waiting (e.g. WEKA, DDN).</dd>
+        <dt>HAMR</dt><dd>Heat-Assisted Magnetic Recording — a technology that keeps raising hard-disk capacity, central to the flash-vs-HDD debate.</dd>
       </dl>
     </div>
   </section>
@@ -2955,6 +2990,7 @@ footer b{color:#dce7f6}
         <div class="ixhead">N</div>
         <p class="ix"><b>Nanoimprint lithography</b> — <a href="#ch4">4</a></p>
         <p class="ix"><b>Nebius</b> — <a href="#ch12">12</a></p>
+        <p class="ix"><b>NetApp</b> — <a href="#ch10">10</a>, 15</p>
         <p class="ix"><b>Neoclouds</b> — <a href="#ch12">12</a>, 11</p>
         <p class="ix"><b>Neuromorphic / analog</b> — <a href="#ch13">13</a></p>
         <p class="ix"><b>Nuclear / SMR</b> — <a href="#ch11">11</a></p>
@@ -2968,6 +3004,7 @@ footer b{color:#dce7f6}
         <p class="ix"><b>Photonic computing</b> — <a href="#ch13">13</a></p>
         <p class="ix"><b>Picks and shovels</b> — <a href="#lens">0</a></p>
         <p class="ix"><b>Power &amp; the grid</b> — <a href="#ch11">11</a>, 15</p>
+        <p class="ix"><b>Pure Storage</b> — <a href="#ch10">10</a>, 15</p>
         <p class="ix"><b>PyTorch / JAX</b> — <a href="#ch12">12</a></p>
         <div class="ixhead">Q–R</div>
         <p class="ix"><b>Quantum computing</b> — <a href="#ch13">13</a></p>
@@ -2977,10 +3014,12 @@ footer b{color:#dce7f6}
         <div class="ixhead">S</div>
         <p class="ix"><b>Samsung</b> — <a href="#ch6">6</a>, 4</p>
         <p class="ix"><b>Scaling laws</b> — <a href="#ch14">14</a></p>
+        <p class="ix"><b>Seagate / Western Digital (HDD)</b> — <a href="#ch10">10</a></p>
         <p class="ix"><b>Scenarios (stress tests)</b> — <a href="#ch15">15</a></p>
         <p class="ix"><b>Serving engines (vLLM, SGLang)</b> — <a href="#ch12">12</a></p>
         <p class="ix"><b>SerDes</b> — <a href="#ch7">7</a></p>
         <p class="ix"><b>SK Hynix</b> — <a href="#ch6">6</a>, 15</p>
+        <p class="ix"><b>Storage &amp; systems</b> — <a href="#ch10">10</a>, 15</p>
         <p class="ix"><b>Substrate (Thiel-backed)</b> — <a href="#ch4">4</a></p>
         <p class="ix"><b>Synopsys</b> — <a href="#ch3">3</a>, 15</p>
         <div class="ixhead">T</div>
@@ -2993,6 +3032,7 @@ footer b{color:#dce7f6}
         <p class="ix"><b>TSMC "Goldilocks"</b> — <a href="#ch15">15</a></p>
         <div class="ixhead">U–Z</div>
         <p class="ix"><b>Utilization (MFU)</b> — <a href="#ch14">14</a></p>
+        <p class="ix"><b>VAST Data</b> — <a href="#ch10">10</a></p>
         <p class="ix"><b>Vertiv</b> — <a href="#ch10">10</a>, 15</p>
         <p class="ix"><b>Vistra</b> — <a href="#ch11">11</a>, 15</p>
         <p class="ix"><b>Wafer (sand → disc)</b> — <a href="#ch2">2</a></p>
